@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>存一些c++代码 | meng的博客</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1558100472812">
+<link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+	<div id="jnkc" style="z-index:2;padding-left: 16px;color: #dee2e6;" >时间加载中♪(´▽｀)...
+    <script>
+            document.write("")
+            setInterval("jnkc.innerHTML= '现在是：'+new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+    </script>
+</div>
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://guohaomeng.github.io">
+        <img src="https://guohaomeng.github.io/images/avatar.png?v=1558100472812" class="site-logo">
+        <h1 class="site-title">meng的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">存一些c++代码</h2>
+            <div class="post-date">2019-05-01</div>
+            
+            <div class="post-content">
+              <p>以待不时之需</p>
+<!-- more -->
+<h3 id="1选择排序">1.选择排序</h3>
+<pre><code class="language-c++">/*选择排序*/
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+   int i,j,min,temp,a[5];
+   cout&lt;&lt;&quot;输入数据&quot;&lt;&lt;endl;
+   for(i=0;i&lt;5;i++)
+   {
+     cout&lt;&lt;&quot;a[&quot;&lt;&lt;i&lt;&lt;&quot;]=&quot;;  //输入数据，存在数组中
+	 cin&gt;&gt;a[i];
+   
+   }
+  
+   cout&lt;&lt;endl&lt;&lt;&quot;原数为&quot;&lt;&lt;endl;
+   for(i=0;i&lt;5;i++)
+	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;   //输出数组，显示
+   cout&lt;&lt;endl;
+   
+   for(i=0;i&lt;5;i++)
+   {
+	   min=i;
+      for(j=i+1;j&lt;5;j++)
+		  if(a[min]&gt;a[j]) //排序，将最小值下标放在min,只要出现比a[min]小的就和a[min]交换，始终让a[min]储存最小值
+			  min=j;
+		  temp=a[i];
+		  a[i]=a[min];
+		  a[min]=temp;
+   
+   
+   }
+   
+   cout&lt;&lt;endl&lt;&lt;&quot;排序后数据为&quot;&lt;&lt;endl;
+   for(i=0;i&lt;5;i++)
+	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;; //输出排序后的数组
+   cout&lt;&lt;endl;
+   
+   return 0;
+
+
+
+}
+</code></pre>
+<h3 id="2结合函数的选择排序">2.结合函数的选择排序</h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+   void select_sort(int a[],int n); //函数声明
+
+   int i,a[5];
+
+   cout&lt;&lt;&quot;输入数组&quot;&lt;&lt;endl;
+  for(i=0;i&lt;5;i++)
+   {
+     cout&lt;&lt;&quot;a[&quot;&lt;&lt;i&lt;&lt;&quot;]=&quot;;  //输入数据，存在数组中
+	 cin&gt;&gt;a[i];
+   
+   }
+  
+   cout&lt;&lt;endl&lt;&lt;&quot;原数组为&quot;&lt;&lt;endl;
+   for(i=0;i&lt;5;i++)
+	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;   //输出数组，显示
+   cout&lt;&lt;endl;
+
+   
+   select_sort(a,5);  //调用函数
+
+  
+   cout&lt;&lt;endl&lt;&lt;&quot;排序后数组为&quot;&lt;&lt;endl;
+     for(i=0;i&lt;5;i++)
+	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+
+   
+   return 0;
+
+
+
+}
+
+void select_sort(int a[], int n)
+{
+    int i,j,temp,min;
+	 for(i=0;i&lt;4;i++)
+   {
+	   min=i;
+      for(j=i+1;j&lt;5;j++)
+		  if(a[min]&gt;a[j]) //排序，将最小值下标放在min,只要出现比a[min]小的就和a[min]交换，始终让a[min]储存最小值
+			  min=j;
+		  temp=a[i];
+		  a[i]=a[min];
+		  a[min]=temp;
+   
+   
+   }
+   
+
+}
+</code></pre>
+<h3 id="3折半调换顺序">3.折半调换顺序</h3>
+<pre><code class="language-c++">/*折半调换顺序*/
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+  const int n=5;
+  int a[n],i,temp;
+  cout&lt;&lt;&quot;enter array a&quot;&lt;&lt;endl;
+  for(i=0;i&lt;n;i++)
+	  cin&gt;&gt;a[i];
+  cout&lt;&lt;&quot;array a:&quot;&lt;&lt;endl;
+  for(i=0;i&lt;n;i++)
+	  cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+  
+  for(i=0;i&lt;n/2;i++)
+  {
+    temp=a[i];
+	a[i]=a[n-i-1];
+	a[n-i-1]=temp;
+  
+  
+  }
+
+ cout&lt;&lt;endl&lt;&lt;&quot;Now, array a:&quot;&lt;&lt;endl;
+ for(i=0;i&lt;n;i++)
+	 cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+ cout&lt;&lt;endl;
+ return 0;
+
+
+
+
+}
+</code></pre>
+<h3 id="4折半查找">4.折半查找</h3>
+<pre><code class="language-c++">/*折半查找*/
+#include &lt;iostream&gt;//注意整个程序中标志变量的使用，如flag，sign
+using namespace std;
+int main()
+{ const int n=15;
+  int i,number,top,bott,mid,loca,a[n];
+  bool flag=true,sign;
+  char c;
+  cout&lt;&lt;&quot;enter data:&quot;&lt;&lt;endl;;
+  cin&gt;&gt;a[0];
+  i=1;
+  
+  while(i&lt;n)
+   {cin&gt;&gt;a[i];
+    if (a[i]&gt;=a[i-1])
+      i++;
+    else
+      cout&lt;&lt;&quot;enter this data again:&quot;;//要求输入有序数组
+   }
+  cout&lt;&lt;endl;
+  
+  for (i=0;i&lt;n;i++)
+    cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+  cout&lt;&lt;endl;
+  
+  while(flag)
+    {cout&lt;&lt;&quot;input number to look for:&quot;;
+     cin&gt;&gt;number;
+     sign=false;
+     top=0;            //top是查找区间的起始位置
+     bott=n-1;         //bott是查找区间的最末位置
+     
+	 if ((number&lt;a[0])||(number&gt;a[n-1]))  //要查的数不在查找区间内
+       loca=-1;        // 表示找不到
+     
+	 while ((!sign) &amp;&amp; (top&lt;=bott))
+       {mid=(bott+top)/2;
+        if (number==a[mid])
+         {loca=mid;
+          cout&lt;&lt;&quot;Find &quot;&lt;&lt;number&lt;&lt;&quot;, its position is &quot;&lt;&lt;loca+1&lt;&lt;endl;//注意输出位置时下标加1
+		  sign=true;
+         }
+        else if (number&lt;a[mid])
+         bott=mid-1;
+        else
+        top=mid+1;
+       }
+     if(!sign||loca==-1)
+       cout&lt;&lt;number&lt;&lt;&quot; has not found.&quot;&lt;&lt;endl;;
+     
+	 cout&lt;&lt;&quot;continu or not(Y/N)?&quot;;
+     cin&gt;&gt;c;
+     if (c=='N'||c=='n')
+	   flag=false;
+    }
+   return 0;
+ }
+</code></pre>
+<h3 id="5字符数组的调换顺序">5.字符数组的调换顺序</h3>
+<pre><code class="language-c++">/*字符数组的调换顺序*/
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{ const n=10;
+ int i;
+ char a[n],temp;
+ cout&lt;&lt;&quot;please input a string:&quot;;
+ for(i=0;i&lt;n;i++)
+     cin&gt;&gt;a[i];
+ for(i=0;i&lt;n/2;i++)
+ {temp=a[i];a[i]=a[n-i-1];a[n-i-1]=temp;}
+ for(i=0;i&lt;n;i++)
+     cout&lt;&lt;a[i];
+ cout&lt;&lt;endl;
+ return 0;
+}
+</code></pre>
+<h3 id="6字符串的调换顺序">6.字符串的调换顺序</h3>
+<pre><code class="language-c++">/*字符串的调换顺序*/
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main()
+{ string a;
+  int i,n;
+  char temp;
+  
+  cout&lt;&lt;&quot;please input a string:&quot;;
+  cin&gt;&gt;a;
+ 
+  n=a.size();
+ 
+  for(i=0;i&lt;n/2;i++)
+  {temp=a[i];a[i]=a[n-i-1];a[n-i-1]=temp;}
+ 
+  cout&lt;&lt;a&lt;&lt;endl;
+  
+  return 0;
+}
+</code></pre>
+<p>c++真难〒▽〒</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://guohaomeng.github.io/post/lesslesszhi-yao-ping-fan-greatergreater-ping-fan-que-ye-wei-da">
+                  <h3 class="post-title">
+                    《只要平凡》----平凡却也伟大
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'a58a10e740ada94b81bf',
+        clientSecret: '8296c6564d397f6d7423403a021fd1b573ab6664',
+        repo: 'guohaomeng.github.io',
+        owner: 'guohaomeng',
+        admin: ['guohaomeng'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
