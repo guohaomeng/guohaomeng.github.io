@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>简单的代码，不简单的特效 | meng的博客</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1559656612909">
+<link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+	<div id="jnkc" style="z-index:2;padding-left: 16px;color: #dee2e6;" >时间加载中♪(´▽｀)...
+    <script>
+            document.write("")
+            setInterval("jnkc.innerHTML= '现在是：'+new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+    </script>
+</div>
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://guohaomeng.github.io">
+        <img src="https://guohaomeng.github.io/images/avatar.png?v=1559656612909" class="site-logo">
+        <h1 class="site-title">meng的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">简单的代码，不简单的特效</h2>
+            <div class="post-date">2019-06-04</div>
+            
+              <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/jian-dan-de-dai-ma-bu-jian-dan-de-te-xiao.png')">
+              </div>
+            
+            <div class="post-content">
+              <p>150行不到的代码量......</p>
+<!-- more -->
+<h3 id="不废话上代码">不废话，上代码</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
+
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+  &lt;title&gt;粒子海洋特效&lt;/title&gt;
+&lt;/head&gt;
+&lt;style&gt;
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+&lt;/style&gt;
+
+&lt;body&gt;
+&lt;/body&gt;
+&lt;script&gt;
+  // Init Context 粒子海洋
+  let c = document.createElement('canvas').getContext('2d')
+  let postctx = document.body.appendChild(document.createElement('canvas')).getContext('2d')
+  let canvas = c.canvas
+  let vertices = []
+
+  // Effect Properties
+  let vertexCount = 7000
+  let vertexSize = 3
+  let oceanWidth = 204
+  let oceanHeight = -80
+  let gridSize = 32;
+  let waveSize = 16;
+  let perspective = 100;
+
+  // Common variables
+  let depth = (vertexCount / oceanWidth * gridSize)
+  let frame = 0
+  let { sin, cos, tan, PI } = Math
+
+  // Render loop
+  let loop = () =&gt; {
+    let rad = sin(frame / 100) * PI / 20
+    let rad2 = sin(frame / 50) * PI / 10
+    frame++
+    if (postctx.canvas.width !== postctx.canvas.offsetWidth || postctx.canvas.height !== postctx.canvas.offsetHeight) {
+      postctx.canvas.width = canvas.width = postctx.canvas.offsetWidth
+      postctx.canvas.height = canvas.height = postctx.canvas.offsetHeight
+    }
+
+
+    c.fillStyle = `hsl(200deg, 100%, 2%)`
+    c.fillRect(0, 0, canvas.width, canvas.height)
+    c.save()
+    c.translate(canvas.width / 2, canvas.height / 2)
+
+    c.beginPath()
+    vertices.forEach((vertex, i) =&gt; {
+      let ni = i + oceanWidth
+      let x = vertex[0] - frame % (gridSize * 2)
+      let z = vertex[2] - frame * 2 % gridSize + (i % 2 === 0 ? gridSize / 2 : 0)
+      let wave = (cos(frame / 45 + x / 50) - sin(frame / 20 + z / 50) + sin(frame / 30 + z * x / 10000))
+      let y = vertex[1] + wave * waveSize
+      let a = Math.max(0, 1 - (Math.sqrt(x ** 2 + z ** 2)) / depth)
+      let tx, ty, tz
+
+      y -= oceanHeight
+
+      // Transformation variables
+      tx = x
+      ty = y
+      tz = z
+
+      // Rotation Y
+      tx = x * cos(rad) + z * sin(rad)
+      tz = -x * sin(rad) + z * cos(rad)
+
+      x = tx
+      y = ty
+      z = tz
+
+      // Rotation Z
+      tx = x * cos(rad) - y * sin(rad)
+      ty = x * sin(rad) + y * cos(rad)
+
+      x = tx;
+      y = ty;
+      z = tz;
+
+      // Rotation X
+
+      ty = y * cos(rad2) - z * sin(rad2)
+      tz = y * sin(rad2) + z * cos(rad2)
+
+      x = tx;
+      y = ty;
+      z = tz;
+
+      x /= z / perspective
+      y /= z / perspective
+
+
+
+      if (a &lt; 0.01) return
+      if (z &lt; 0) return
+
+
+      c.globalAlpha = a
+      c.fillStyle = `hsl(${180 + wave * 20}deg, 100%, 50%)`
+      c.fillRect(x - a * vertexSize / 2, y - a * vertexSize / 2, a * vertexSize, a * vertexSize)
+      c.globalAlpha = 1
+    })
+    c.restore()
+
+    // Post-processing
+    postctx.drawImage(canvas, 0, 0)
+
+    postctx.globalCompositeOperation = &quot;screen&quot;
+    postctx.filter = 'blur(16px)'
+    postctx.drawImage(canvas, 0, 0)
+    postctx.filter = 'blur(0)'
+    postctx.globalCompositeOperation = &quot;source-over&quot;
+
+    requestAnimationFrame(loop)
+  }
+
+  // Generating dots
+  for (let i = 0; i &lt; vertexCount; i++) {
+    let x = i % oceanWidth
+    let y = 0
+    let z = i / oceanWidth &gt;&gt; 0
+    let offset = oceanWidth / 2
+    vertices.push([(-offset + x) * gridSize, y * gridSize, z * gridSize])
+  }
+
+  loop()
+&lt;/script&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>惊了Σ(っ °Д °;)っ
+<img src="https://guohaomeng.github.io/post-images/1559656298568.png" alt="">
+传送门：<a href="./otherfiles/index1.html">粒子海洋特效</a>
+ps:注意这个有些占用CPU。。。还有手机端不一定能正常显示</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://guohaomeng.github.io/post/wang-ye-nei-qian-wang-yi-yun-cha-jian-quan-guo-cheng">
+                  <h3 class="post-title">
+                    网页内嵌网易云插件全过程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'a58a10e740ada94b81bf',
+        clientSecret: '8296c6564d397f6d7423403a021fd1b573ab6664',
+        repo: 'guohaomeng.github.io',
+        owner: 'guohaomeng',
+        admin: ['guohaomeng'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
