@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>低配版音频可视化（c++版） | meng的博客</title>
+<meta name="description" content="温故而知新">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1563710763227">
+<link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+	<div id="jnkc" style="z-index:2;padding-left: 16px;color: #dee2e6;" >时间加载中♪(´▽｀)...
+    <script>
+            document.write("")
+            setInterval("jnkc.innerHTML= '现在是：'+new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
+    </script>
+</div>
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://guohaomeng.github.io">
+        <img src="https://guohaomeng.github.io/images/avatar.png?v=1563710763227" class="site-logo">
+        <h1 class="site-title">meng的博客</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">低配版音频可视化（c++版）</h2>
+            <div class="post-date">2019-07-21</div>
+            
+              <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/di-pei-ban-yin-pin-ke-shi-hua-cban.jpg')">
+              </div>
+            
+            <div class="post-content">
+              <p>在命令行里一行行打出wav音频文件的时域波形图</p>
+<!-- more -->
+<p>这么做可以用来分析某段音频的振幅，以便据此分析出该声音的种类及特性
+运行结果类似下面这张图
+<img src="https://guohaomeng.github.io/post-images/1563710493400.jpg" alt="">
+具体代码如下：</p>
+<pre><code>//
+//  test.cpp
+//  PCM3.0    解码效率低 卡顿十分严重
+//  绘制时域波形图，星星数量代表值的大小。
+//
+
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;windows.h&gt;
+
+using namespace std;
+
+struct wav_struct
+{
+    unsigned long file_size;       //文件大小
+    unsigned short channel;        //通道数
+    unsigned long frequency;       //采样频率
+    unsigned long Bps;             //Byte率
+    unsigned short sample_num_bit; //一个样本的位数
+    unsigned long data_size;       //数据大小
+    unsigned char *data;           //音频数据
+};
+
+int printstar2(double p1)
+{
+    int p = p1;
+    if (p &lt; 0 &amp;&amp; p &gt; -50)
+    {
+        for (int i = 0; i &lt; (50 + p); i++)
+        {
+            cout &lt;&lt; &quot; &quot;;
+        }
+        for (int i = 0; i &lt; (-p); i++)
+        {
+            cout &lt;&lt; &quot;*&quot;;
+        }
+        cout &lt;&lt; endl;
+    }
+    else if (p == 0)
+    {
+        for (int i = 0; i &lt; 50; i++)
+        {
+            cout &lt;&lt; &quot; &quot;;
+        }
+
+        cout &lt;&lt; &quot;|&quot;;
+        cout &lt;&lt; endl;
+    }
+    else if (p &gt; 0)
+    {
+        for (int i = 0; i &lt;= 50; i++)
+        {
+            cout &lt;&lt; &quot; &quot;;
+        }
+        for (int i = 0; i &lt; p; i++)
+        {
+            cout &lt;&lt; &quot;*&quot;;
+        }
+        cout &lt;&lt; endl;
+    }
+    else
+        cout &lt;&lt; p &lt;&lt; endl;
+}
+
+int main(int argc, char **argv)
+{
+    fstream fs;
+    wav_struct WAV;
+
+    fs.open(&quot;./Alarm02.wav&quot;, ios::binary | ios::in); //要分析的音频文件路径，这里是源程序目录下的dogbarks.wav文件
+
+    fs.seekg(0, ios::end); //用c++常用方法获得文件大小
+    WAV.file_size = fs.tellg();
+
+    fs.seekg(0x14);
+    fs.read((char *)&amp;WAV.channel, sizeof(WAV.channel));
+
+    fs.seekg(0x18);
+    fs.read((char *)&amp;WAV.frequency, sizeof(WAV.frequency));
+
+    fs.seekg(0x1c);
+    fs.read((char *)&amp;WAV.Bps, sizeof(WAV.Bps));
+
+    fs.seekg(0x22);
+    fs.read((char *)&amp;WAV.sample_num_bit, sizeof(WAV.sample_num_bit));
+
+    fs.seekg(0x28);
+    fs.read((char *)&amp;WAV.data_size, sizeof(WAV.data_size));
+
+    WAV.data = new unsigned char[WAV.data_size];
+
+    fs.seekg(0x2c);
+    fs.read((char *)WAV.data, sizeof(char) * WAV.data_size);
+
+    int m = 0;
+    for (unsigned long i = 0; i &lt; WAV.data_size; i = i + 400) //可调节打印行数
+    {
+        //右边为大端
+        unsigned long data_low = WAV.data[i];
+        unsigned long data_high = WAV.data[i + 1];
+        double data_true = data_high * 256 + data_low;
+        long data_complement = 0;
+        //取大端的最高位（符号位）
+        int my_sign = (int)(data_high / 128);
+
+        if (my_sign == 1)
+        {
+            data_complement = data_true - 65536;
+        }
+        else
+        {
+            data_complement = data_true;
+        }
+
+        setprecision(4);
+        double float_data = (double)(data_complement / (double)32768);
+        double starnumber1 = float_data * 100;
+        printstar2(starnumber1);
+        //printf(&quot;%f &quot;, float_data);
+        Sleep(10); //调节屏幕滚动速度
+        m++;
+    }
+    fs.close();
+    cout &lt;&lt; &quot;文件大小为  ：&quot; &lt;&lt; WAV.file_size &lt;&lt; endl;
+    cout &lt;&lt; &quot;音频通道数  ：&quot; &lt;&lt; WAV.channel &lt;&lt; endl;
+    cout &lt;&lt; &quot;采样频率    ：&quot; &lt;&lt; WAV.frequency &lt;&lt; endl;
+    cout &lt;&lt; &quot;Byte率      ：&quot; &lt;&lt; WAV.Bps &lt;&lt; endl;
+    cout &lt;&lt; &quot;样本位数    ：&quot; &lt;&lt; WAV.sample_num_bit &lt;&lt; endl;
+    cout &lt;&lt; &quot;音频数据大小：&quot; &lt;&lt; WAV.data_size &lt;&lt; endl;
+    cout &lt;&lt; &quot;总计打印行数：&quot; &lt;&lt; m &lt;&lt; endl;
+
+    delete[] WAV.data;
+    int n;
+    cout &lt;&lt; &quot;出现的数字代表星星的数量，输入任意值结束程序&quot;;
+    cin &gt;&gt; n;
+}
+</code></pre>
+<p>源程序及测试文件：<a href="../../otherfiles/audiotest.zip">点此下载</a></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://guohaomeng.github.io/post/shi-yi-shi-shi-pin">
+                  <h3 class="post-title">
+                    试一试视频
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: 'a58a10e740ada94b81bf',
+        clientSecret: '8296c6564d397f6d7423403a021fd1b573ab6664',
+        repo: 'guohaomeng.github.io',
+        owner: 'guohaomeng',
+        admin: ['guohaomeng'],
+        id: location.pathname,      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
