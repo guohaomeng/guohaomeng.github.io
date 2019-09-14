@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1566126621921">
+<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1568465449115">
 <link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
 
 
@@ -41,7 +41,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://guohaomeng.github.io">
-        <img src="https://guohaomeng.github.io/images/avatar.png?v=1566126621921" class="site-logo">
+        <img src="https://guohaomeng.github.io/images/avatar.png?v=1568465449115" class="site-logo">
         <h1 class="site-title">meng的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -116,12 +116,12 @@
 <p>1.首先，我们去网上下载c/c++编译器 MinGw -64</p>
 <p><a href="https://sourceforge.net/projects/mingw-w64/files/">下载地址：https://sourceforge.net/projects/mingw-w64/files/</a></p>
 <p>鉴于国内的网络环境，不建议下载在线安装器安装编译器（有可能装不上），这里我们直接下载完整版压缩包，选择最新版本8.1.0中的x86_64-win32-seh(64位系统，开发windows应用程序），单击进行下载。</p>
-<p><img src="https://guohaomeng.github.io/post-images/1566121695931.jpg" alt="">
-2.下载完成之后可以解压到任意位置。<img src="https://guohaomeng.github.io/post-images/1566121721257.jpg" alt="">
-3.添加环境变量。依次开始----设置----系统----关于----系统信息----高级系统设置----环境变量。选中系统变量中的path变量，编辑，新建，填入编译器bin文件夹的路径。OK！
-<img src="https://guohaomeng.github.io/post-images/1566125266305.jpg" alt="">
-<img src="https://guohaomeng.github.io/post-images/1566125276247.jpg" alt="">
-4.接下来看看是否成功安装了编译器 win+R  填入cmd，运行。键入命令g++ -v，如果出现一大堆东西，就代表安装成功了。
+<p><img src="https://guohaomeng.github.io/post-images/1566121695931.jpg" alt=""><br>
+2.下载完成之后可以解压到任意位置。<img src="https://guohaomeng.github.io/post-images/1566121721257.jpg" alt=""><br>
+3.添加环境变量。依次开始----设置----系统----关于----系统信息----高级系统设置----环境变量。选中系统变量中的path变量，编辑，新建，填入编译器bin文件夹的路径。OK！<br>
+<img src="https://guohaomeng.github.io/post-images/1566125266305.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566125276247.jpg" alt=""><br>
+4.接下来看看是否成功安装了编译器 win+R  填入cmd，运行。键入命令g++ -v，如果出现一大堆东西，就代表安装成功了。<br>
 <img src="https://guohaomeng.github.io/post-images/1566122749850.jpg" alt=""></p>
 <h2 id="第二部配置vscode">第二部，配置vscode</h2>
 <p>1.安装c++扩展。在vscode扩展商店中搜索并安装c/c++，Code Runner这两款扩展。重启vscode使扩展生效。</p>
@@ -136,16 +136,16 @@ int main()
     return 0;
 }
 </code></pre>
-<p>3.按F5编译，这时会提醒你配置c/c++编译器，总共需要配置lanuch.json及task.json两个配置文件。配置过程如下图
-<img src="https://guohaomeng.github.io/post-images/1566124088049.jpg" alt="">
-<img src="https://guohaomeng.github.io/post-images/1566124096108.jpg" alt="">
-<img src="https://guohaomeng.github.io/post-images/1566124102343.jpg" alt="">
-4.CTRL+s保存，此时再回到001.cpp文件，再按F5，去配置任务文件
-<img src="https://guohaomeng.github.io/post-images/1566124345036.jpg" alt="">
-<img src="https://guohaomeng.github.io/post-images/1566124353610.jpg" alt="">
-前面配置好编译器后，这里就不用多task.json文件做任何改动。CTRL+S保存一下
-5.再度切回001.cpp，按下F5（编译+运行）；
-<img src="https://guohaomeng.github.io/post-images/1566124773897.jpg" alt="">
+<p>3.按F5编译，这时会提醒你配置c/c++编译器，总共需要配置lanuch.json及task.json两个配置文件。配置过程如下图<br>
+<img src="https://guohaomeng.github.io/post-images/1566124088049.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566124096108.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566124102343.jpg" alt=""><br>
+4.CTRL+s保存，此时再回到001.cpp文件，再按F5，去配置任务文件<br>
+<img src="https://guohaomeng.github.io/post-images/1566124345036.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566124353610.jpg" alt=""><br>
+前面配置好编译器后，这里就不用多task.json文件做任何改动。CTRL+S保存一下<br>
+5.再度切回001.cpp，按下F5（编译+运行）；<br>
+<img src="https://guohaomeng.github.io/post-images/1566124773897.jpg" alt=""><br>
 弹出小黑窗，大功告成！</p>
 <h2 id="最后">最后</h2>
 <p>告诉大家一个命令行里手动编译cpp/c文件的命令，比如编译上面的那个001.cpp</p>
@@ -153,7 +153,7 @@ int main()
 g++ 001.cpp -o 001          //-o是重命名，g++后跟源文件名，C语言的源文件也可以用g++命令编译
 ./001.exe                            //运行生成的可执行文件
 </code></pre>
-<p>如图：
+<p>如图：<br>
 <img src="https://guohaomeng.github.io/post-images/1566126298549.jpg" alt=""></p>
 
             </div>

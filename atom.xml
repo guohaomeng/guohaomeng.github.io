@@ -1,116 +1,319 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" >
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://guohaomeng.github.io</id>
+    <title>meng的博客</title>
+    <updated>2019-09-14T12:51:13.092Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://guohaomeng.github.io"/>
+    <link rel="self" href="https://guohaomeng.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://guohaomeng.github.io/images/avatar.png</logo>
+    <icon>https://guohaomeng.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2019, meng的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[用VScode写c/c++]]></title>
+        <id>https://guohaomeng.github.io/post/yong-vscode-xie-cc</id>
+        <link href="https://guohaomeng.github.io/post/yong-vscode-xie-cc">
+        </link>
+        <updated>2019-08-18T09:04:53.000Z</updated>
+        <summary type="html"><![CDATA[<p>本篇文章主要介绍vscode下c/c++的配置，基本原理可以理解为用一个文本编辑器（vscode）+一个编译器（c/c++编译器）组成开发环境，喜欢vscode界面的不要错过。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>本篇文章主要介绍vscode下c/c++的配置，基本原理可以理解为用一个文本编辑器（vscode）+一个编译器（c/c++编译器）组成开发环境，喜欢vscode界面的不要错过。</p>
+<!-- more -->
+<h2 id="第一步下载并安装编译器">第一步，下载并安装编译器</h2>
+<p>1.首先，我们去网上下载c/c++编译器 MinGw -64</p>
+<p><a href="https://sourceforge.net/projects/mingw-w64/files/">下载地址：https://sourceforge.net/projects/mingw-w64/files/</a></p>
+<p>鉴于国内的网络环境，不建议下载在线安装器安装编译器（有可能装不上），这里我们直接下载完整版压缩包，选择最新版本8.1.0中的x86_64-win32-seh(64位系统，开发windows应用程序），单击进行下载。</p>
+<p><img src="https://guohaomeng.github.io/post-images/1566121695931.jpg" alt=""><br>
+2.下载完成之后可以解压到任意位置。<img src="https://guohaomeng.github.io/post-images/1566121721257.jpg" alt=""><br>
+3.添加环境变量。依次开始----设置----系统----关于----系统信息----高级系统设置----环境变量。选中系统变量中的path变量，编辑，新建，填入编译器bin文件夹的路径。OK！<br>
+<img src="https://guohaomeng.github.io/post-images/1566125266305.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566125276247.jpg" alt=""><br>
+4.接下来看看是否成功安装了编译器 win+R  填入cmd，运行。键入命令g++ -v，如果出现一大堆东西，就代表安装成功了。<br>
+<img src="https://guohaomeng.github.io/post-images/1566122749850.jpg" alt=""></p>
+<h2 id="第二部配置vscode">第二部，配置vscode</h2>
+<p>1.安装c++扩展。在vscode扩展商店中搜索并安装c/c++，Code Runner这两款扩展。重启vscode使扩展生效。</p>
+<p>2.在磁盘某一位置（比如桌面）新建一个文件夹（比如my code)用于存放你将来的c/c++源程序文件。在vscode中单击 文件--打开文件夹，打开刚建好的文件夹。新建一个文件，如001.cpp，写下如下代码。</p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+    cout &lt;&lt; &quot;hello,world&quot; &lt;&lt; endl;
+		int n;
+		cin&gt;&gt;n;
+    return 0;
+}
+</code></pre>
+<p>3.按F5编译，这时会提醒你配置c/c++编译器，总共需要配置lanuch.json及task.json两个配置文件。配置过程如下图<br>
+<img src="https://guohaomeng.github.io/post-images/1566124088049.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566124096108.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566124102343.jpg" alt=""><br>
+4.CTRL+s保存，此时再回到001.cpp文件，再按F5，去配置任务文件<br>
+<img src="https://guohaomeng.github.io/post-images/1566124345036.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566124353610.jpg" alt=""><br>
+前面配置好编译器后，这里就不用多task.json文件做任何改动。CTRL+S保存一下<br>
+5.再度切回001.cpp，按下F5（编译+运行）；<br>
+<img src="https://guohaomeng.github.io/post-images/1566124773897.jpg" alt=""><br>
+弹出小黑窗，大功告成！</p>
+<h2 id="最后">最后</h2>
+<p>告诉大家一个命令行里手动编译cpp/c文件的命令，比如编译上面的那个001.cpp</p>
+<pre><code>cd C:\Users\meng\Desktop\my code    //首先切换到该文件目录下
+g++ 001.cpp -o 001          //-o是重命名，g++后跟源文件名，C语言的源文件也可以用g++命令编译
+./001.exe                            //运行生成的可执行文件
+</code></pre>
+<p>如图：<br>
+<img src="https://guohaomeng.github.io/post-images/1566126298549.jpg" alt=""></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[用vscode写网页----基础安装篇]]></title>
+        <id>https://guohaomeng.github.io/post/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian</id>
+        <link href="https://guohaomeng.github.io/post/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian">
+        </link>
+        <updated>2019-08-10T11:14:48.000Z</updated>
+        <summary type="html"><![CDATA[<p>在前端开发中，有一个非常好用的工具，Visual Studio Code，简称VS code。今天就给大家简单介绍下它的使用方法</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在前端开发中，有一个非常好用的工具，Visual Studio Code，简称VS code。今天就给大家简单介绍下它的使用方法</p>
+ <!-- more --> 
+<h2 id="1为什么用vscode">1.为什么用vscode？</h2>
+<p>当然是vscode有着数不完的优点呀</p>
+<ul>
+<li>开源，免费；</li>
+<li>自定义配置</li>
+<li>集成git</li>
+<li>智能提示强大</li>
+<li>支持各种文件格式（html/jade/css/less/sass/xml）</li>
+<li>调试功能强大</li>
+<li>各种方便的快捷键</li>
+<li>强大的插件扩展<br>
+对前端这么好，没理由不用啊<br>
+vscode官网：<a href="https://code.visualstudio.com/">点击前往</a></li>
+</ul>
+<h2 id="2下载安装vscode并进行开发前的简单配置">2.下载安装vscode，并进行开发前的简单配置</h2>
+<p>来到vscode官网，点击下载<br>
+<img src="https://guohaomeng.github.io/post-images/1565442330218.jpg" alt=""><br>
+打开下载好的安装程序，如图所示操作<br>
+<img src="https://guohaomeng.github.io/post-images/1565442410159.jpg" alt=""><br>
+装好后打开，你会发现界面全是英文。别紧张，接下来装个简体中文插件就好了<br>
+点击侧边第五个图标（扩展按钮）如图<br>
+<img src="https://guohaomeng.github.io/post-images/1565442545655.jpg" alt=""><br>
+搜索Chinese<br>
+<img src="https://guohaomeng.github.io/post-images/1565442571940.jpg" alt=""><br>
+就是第一个插件了，点击安装就好了。<br>
+安装完重启VScode，变成中文了。<br>
+<img src="https://guohaomeng.github.io/post-images/1565442671280.jpg" alt=""><br>
+为了确保我们vscode在写HTML代码时用起来更舒适，除了简体中文插件，推荐同时安装以下几个插件（也是搜索安装）：</p>
+<ol>
+<li>One Dark Pro      深受程序员欢迎的且很漂亮的一款主题插件</li>
+<li>open in browser  安装后可通过ALT+B 组合快捷键方便的在默认浏览器中打开当前正在编辑的网页，可通过ALT+shift +B 在其他浏览器中打开当前网页</li>
+<li>Preview on web Server    这个也很厉害，大家看图就明白了（按CTRL+shift+V打开）<img src="https://guohaomeng.github.io/post-images/1565443562731.jpg" alt=""></li>
+<li>vscode icons   vscode上的文件图标库。</li>
+</ol>
+<h2 id="3正式开始写代码喽">3.正式开始写代码喽</h2>
+<p>首先，在你硬盘某个位置建立一个文件夹，作为你以后各种网页代码的存放地。比如在e盘新建个名为“网页设计”的文件夹。打开vscode，左上角 依次 文件---打开文件夹，在弹出的窗口中选中新建好的文件夹，点击打开。<br>
+<img src="https://guohaomeng.github.io/post-images/1565444180439.jpg" alt=""><br>
+新建一个名为index.html的文件，写个hello，world试试，这里有个小技巧，英文输入状态下打出感叹号，再按TAB键，可以自动生成最基本的网页结构。如下视频所示<br>
+<video width="100%" height="" controls="controls" autoplay="autoplay"><br>
+<source src="../../otherfiles/video/video3.mp4" type="video/mp4" /><br>
+看到这句话说明你的浏览器不支持HTML5的video标签<br>
+</video><br>
+写上hello，world！<br>
+<img src="https://guohaomeng.github.io/post-images/1565445716854.jpg" alt=""><br>
+好了，大功告成！</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[低配版音频可视化（c++版）]]></title>
+        <id>https://guohaomeng.github.io/post/di-pei-ban-yin-pin-ke-shi-hua-cban</id>
+        <link href="https://guohaomeng.github.io/post/di-pei-ban-yin-pin-ke-shi-hua-cban">
+        </link>
+        <updated>2019-07-21T11:49:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>在命令行里一行行打出wav音频文件的时域波形图</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>在命令行里一行行打出wav音频文件的时域波形图</p>
+<!-- more -->
+<p>这么做可以用来分析某段音频的振幅，以便据此分析出该声音的种类及特性<br>
+运行结果类似下面这张图<br>
+<img src="https://guohaomeng.github.io/post-images/1563710493400.jpg" alt=""><br>
+具体代码如下：</p>
+<pre><code>//
+//  test.cpp
+//  PCM3.0    解码效率低 卡顿十分严重
+//  绘制时域波形图，星星数量代表值的大小。
+//
 
-<title>40道c++程序填空题（2） | meng的博客</title>
-<meta name="description" content="温故而知新">
+#include &lt;iostream&gt;
+#include &lt;fstream&gt;
+#include &lt;iomanip&gt;
+#include &lt;windows.h&gt;
 
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+using namespace std;
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1568465449115">
-<link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
+struct wav_struct
+{
+    unsigned long file_size;       //文件大小
+    unsigned short channel;        //通道数
+    unsigned long frequency;       //采样频率
+    unsigned long Bps;             //Byte率
+    unsigned short sample_num_bit; //一个样本的位数
+    unsigned long data_size;       //数据大小
+    unsigned char *data;           //音频数据
+};
 
+int printstar2(double p1)
+{
+    int p = p1;
+    if (p &lt; 0 &amp;&amp; p &gt; -50)
+    {
+        for (int i = 0; i &lt; (50 + p); i++)
+        {
+            cout &lt;&lt; &quot; &quot;;
+        }
+        for (int i = 0; i &lt; (-p); i++)
+        {
+            cout &lt;&lt; &quot;*&quot;;
+        }
+        cout &lt;&lt; endl;
+    }
+    else if (p == 0)
+    {
+        for (int i = 0; i &lt; 50; i++)
+        {
+            cout &lt;&lt; &quot; &quot;;
+        }
 
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
+        cout &lt;&lt; &quot;|&quot;;
+        cout &lt;&lt; endl;
+    }
+    else if (p &gt; 0)
+    {
+        for (int i = 0; i &lt;= 50; i++)
+        {
+            cout &lt;&lt; &quot; &quot;;
+        }
+        for (int i = 0; i &lt; p; i++)
+        {
+            cout &lt;&lt; &quot;*&quot;;
+        }
+        cout &lt;&lt; endl;
+    }
+    else
+        cout &lt;&lt; p &lt;&lt; endl;
+}
 
-  
+int main(int argc, char **argv)
+{
+    fstream fs;
+    wav_struct WAV;
 
+    fs.open(&quot;./Alarm02.wav&quot;, ios::binary | ios::in); //要分析的音频文件路径，这里是源程序目录下的dogbarks.wav文件
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+    fs.seekg(0, ios::end); //用c++常用方法获得文件大小
+    WAV.file_size = fs.tellg();
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    fs.seekg(0x14);
+    fs.read((char *)&amp;WAV.channel, sizeof(WAV.channel));
 
+    fs.seekg(0x18);
+    fs.read((char *)&amp;WAV.frequency, sizeof(WAV.frequency));
 
+    fs.seekg(0x1c);
+    fs.read((char *)&amp;WAV.Bps, sizeof(WAV.Bps));
 
-  </head>
-  <body>
-    <div id="app" class="main">
+    fs.seekg(0x22);
+    fs.read((char *)&amp;WAV.sample_num_bit, sizeof(WAV.sample_num_bit));
 
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-	<div id="jnkc" style="z-index:2;padding-left: 16px;color: #dee2e6;" >时间加载中♪(´▽｀)...
-    <script>
-            document.write("")
-            setInterval("jnkc.innerHTML= '现在是：'+new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
-    </script>
-</div>
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://guohaomeng.github.io">
-        <img src="https://guohaomeng.github.io/images/avatar.png?v=1568465449115" class="site-logo">
-        <h1 class="site-title">meng的博客</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
-    </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      温故而知新
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-    </div>
-  </div>
-</div>
+    fs.seekg(0x28);
+    fs.read((char *)&amp;WAV.data_size, sizeof(WAV.data_size));
 
+    WAV.data = new unsigned char[WAV.data_size];
 
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">40道c++程序填空题（2）</h2>
-            <div class="post-date">2019-06-08</div>
-            
-              <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/40-dao-ccheng-xu-tian-kong-ti-2.jpg')">
-              </div>
-            
-            <div class="post-content">
-              <p>第二版</p>
+    fs.seekg(0x2c);
+    fs.read((char *)WAV.data, sizeof(char) * WAV.data_size);
+
+    int m = 0;
+    for (unsigned long i = 0; i &lt; WAV.data_size; i = i + 400) //可调节打印行数
+    {
+        //右边为大端
+        unsigned long data_low = WAV.data[i];
+        unsigned long data_high = WAV.data[i + 1];
+        double data_true = data_high * 256 + data_low;
+        long data_complement = 0;
+        //取大端的最高位（符号位）
+        int my_sign = (int)(data_high / 128);
+
+        if (my_sign == 1)
+        {
+            data_complement = data_true - 65536;
+        }
+        else
+        {
+            data_complement = data_true;
+        }
+
+        setprecision(4);
+        double float_data = (double)(data_complement / (double)32768);
+        double starnumber1 = float_data * 100;
+        printstar2(starnumber1);
+        //printf(&quot;%f &quot;, float_data);
+        Sleep(10); //调节屏幕滚动速度
+        m++;
+    }
+    fs.close();
+    cout &lt;&lt; &quot;文件大小为  ：&quot; &lt;&lt; WAV.file_size &lt;&lt; endl;
+    cout &lt;&lt; &quot;音频通道数  ：&quot; &lt;&lt; WAV.channel &lt;&lt; endl;
+    cout &lt;&lt; &quot;采样频率    ：&quot; &lt;&lt; WAV.frequency &lt;&lt; endl;
+    cout &lt;&lt; &quot;Byte率      ：&quot; &lt;&lt; WAV.Bps &lt;&lt; endl;
+    cout &lt;&lt; &quot;样本位数    ：&quot; &lt;&lt; WAV.sample_num_bit &lt;&lt; endl;
+    cout &lt;&lt; &quot;音频数据大小：&quot; &lt;&lt; WAV.data_size &lt;&lt; endl;
+    cout &lt;&lt; &quot;总计打印行数：&quot; &lt;&lt; m &lt;&lt; endl;
+
+    delete[] WAV.data;
+    int n;
+    cout &lt;&lt; &quot;出现的数字代表星星的数量，输入任意值结束程序&quot;;
+    cin &gt;&gt; n;
+}
+</code></pre>
+<p>源程序及测试文件：<a href="../../otherfiles/audiotest.zip">点此下载</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[试一试视频]]></title>
+        <id>https://guohaomeng.github.io/post/shi-yi-shi-shi-pin</id>
+        <link href="https://guohaomeng.github.io/post/shi-yi-shi-shi-pin">
+        </link>
+        <updated>2019-06-21T13:54:33.000Z</updated>
+        <summary type="html"><![CDATA[<p>看看能不能放上视频（推荐使用chrome浏览器）</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>看看能不能放上视频（推荐使用chrome浏览器）</p>
+ <!-- more --> 
+<p>视频大概93MB，1m15s<br>
+look！<br>
+<br></p>
+ <video width="100%" height="" controls="controls" autoplay="autoplay">
+		<source src="../../otherfiles/video/video1.mp4" type="video/mp4" />
+	看到这句话说明你的浏览器不支持HTML5的video标签
+</video>
+	底下是这次测试视频用的代码
+	<br>
+<p><img src="https://guohaomeng.github.io/post-images/1561181015756.jpg" alt=""><br>
+<br><br>
+分割线</p>
+<hr>
+<p><img src="https://guohaomeng.github.io/post-images/1561367139373.png" alt=""><br>
+<br><br>
+视频中的转场：<a href="../../otherfiles/zhuanchang.zip">10个无缝转场</a></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[40道c++程序填空题（2）]]></title>
+        <id>https://guohaomeng.github.io/post/40-dao-ccheng-xu-tian-kong-ti-2</id>
+        <link href="https://guohaomeng.github.io/post/40-dao-ccheng-xu-tian-kong-ti-2">
+        </link>
+        <updated>2019-06-08T13:24:28.000Z</updated>
+        <summary type="html"><![CDATA[<p>第二版</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>第二版</p>
 <!-- more --> 
 <p>传送门1：<a href="../../../otherfiles/c++.html">网页版</a></p>
 <p>传送门2：<a href="../../../otherfiles/C++%E7%A8%8B%E5%BA%8F%E9%A2%98%E5%A4%8D%E4%B9%A0.docx">word版</a></p>
@@ -1346,76 +1549,537 @@ int main() {
 
 
 </code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[40道c++程序填空题]]></title>
+        <id>https://guohaomeng.github.io/post/40-dao-ccheng-xu-tian-kong-ti</id>
+        <link href="https://guohaomeng.github.io/post/40-dao-ccheng-xu-tian-kong-ti">
+        </link>
+        <updated>2019-06-08T12:19:16.000Z</updated>
+        <summary type="html"><![CDATA[<p>还是用图片形式比较好...</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>还是用图片形式比较好...</p>
+<!-- more -->
+<p>传送门1：<a href="../../../otherfiles/c++.html">网页版</a></p>
+<p>传送门2：<a href="../../../otherfiles/C++%E7%A8%8B%E5%BA%8F%E9%A2%98%E5%A4%8D%E4%B9%A0.docx">word版</a></p>
+<p>图片版：</p>
+<p><img src="https://guohaomeng.github.io/post-images/1559996503170.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996509283.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996518471.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996524513.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996546642.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996569468.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996599087.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996605702.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996612458.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996626102.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996634623.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996642788.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996650175.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996657022.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996664971.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996672705.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996679954.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996686631.jpeg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1559996692690.jpeg" alt=""></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[简单的代码，不简单的特效]]></title>
+        <id>https://guohaomeng.github.io/post/jian-dan-de-dai-ma-bu-jian-dan-de-te-xiao</id>
+        <link href="https://guohaomeng.github.io/post/jian-dan-de-dai-ma-bu-jian-dan-de-te-xiao">
+        </link>
+        <updated>2019-06-04T13:44:35.000Z</updated>
+        <summary type="html"><![CDATA[<p>150行不到的代码量......</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>150行不到的代码量......</p>
+<!-- more -->
+<h3 id="不废话上代码">不废话，上代码</h3>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh-CN&quot;&gt;
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://guohaomeng.github.io/post/40-dao-ccheng-xu-tian-kong-ti">
-                  <h3 class="post-title">
-                    40道c++程序填空题
-                  </h3>
-                </a>
-              </div>
-            
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+  &lt;title&gt;粒子海洋特效&lt;/title&gt;
+&lt;/head&gt;
+&lt;style&gt;
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+&lt;/style&gt;
 
-            
-              
-                <div id="gitalk-container" data-aos="fade-in"></div>
-              
+&lt;body&gt;
+&lt;/body&gt;
+&lt;script&gt;
+  // Init Context 粒子海洋
+  let c = document.createElement('canvas').getContext('2d')
+  let postctx = document.body.appendChild(document.createElement('canvas')).getContext('2d')
+  let canvas = c.canvas
+  let vertices = []
 
-              
-            
+  // Effect Properties
+  let vertexCount = 7000
+  let vertexSize = 3
+  let oceanWidth = 204
+  let oceanHeight = -80
+  let gridSize = 32;
+  let waveSize = 16;
+  let perspective = 100;
 
-          </div>
+  // Common variables
+  let depth = (vertexCount / oceanWidth * gridSize)
+  let frame = 0
+  let { sin, cos, tan, PI } = Math
 
-        </div>
-      </div>
-    </div>
+  // Render loop
+  let loop = () =&gt; {
+    let rad = sin(frame / 100) * PI / 20
+    let rad2 = sin(frame / 50) * PI / 10
+    frame++
+    if (postctx.canvas.width !== postctx.canvas.offsetWidth || postctx.canvas.height !== postctx.canvas.offsetHeight) {
+      postctx.canvas.width = canvas.width = postctx.canvas.offsetWidth
+      postctx.canvas.height = canvas.height = postctx.canvas.offsetHeight
+    }
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-<script type="application/javascript">
+    c.fillStyle = `hsl(200deg, 100%, 2%)`
+    c.fillRect(0, 0, canvas.width, canvas.height)
+    c.save()
+    c.translate(canvas.width / 2, canvas.height / 2)
 
-AOS.init();
+    c.beginPath()
+    vertices.forEach((vertex, i) =&gt; {
+      let ni = i + oceanWidth
+      let x = vertex[0] - frame % (gridSize * 2)
+      let z = vertex[2] - frame * 2 % gridSize + (i % 2 === 0 ? gridSize / 2 : 0)
+      let wave = (cos(frame / 45 + x / 50) - sin(frame / 20 + z / 50) + sin(frame / 30 + z * x / 10000))
+      let y = vertex[1] + wave * waveSize
+      let a = Math.max(0, 1 - (Math.sqrt(x ** 2 + z ** 2)) / depth)
+      let tx, ty, tz
 
-hljs.initHighlightingOnLoad()
+      y -= oceanHeight
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+      // Transformation variables
+      tx = x
+      ty = y
+      tz = z
 
-</script>
+      // Rotation Y
+      tx = x * cos(rad) + z * sin(rad)
+      tz = -x * sin(rad) + z * cos(rad)
 
+      x = tx
+      y = ty
+      z = tz
+
+      // Rotation Z
+      tx = x * cos(rad) - y * sin(rad)
+      ty = x * sin(rad) + y * cos(rad)
+
+      x = tx;
+      y = ty;
+      z = tz;
+
+      // Rotation X
+
+      ty = y * cos(rad2) - z * sin(rad2)
+      tz = y * sin(rad2) + z * cos(rad2)
+
+      x = tx;
+      y = ty;
+      z = tz;
+
+      x /= z / perspective
+      y /= z / perspective
+
+
+
+      if (a &lt; 0.01) return
+      if (z &lt; 0) return
+
+
+      c.globalAlpha = a
+      c.fillStyle = `hsl(${180 + wave * 20}deg, 100%, 50%)`
+      c.fillRect(x - a * vertexSize / 2, y - a * vertexSize / 2, a * vertexSize, a * vertexSize)
+      c.globalAlpha = 1
+    })
+    c.restore()
+
+    // Post-processing
+    postctx.drawImage(canvas, 0, 0)
+
+    postctx.globalCompositeOperation = &quot;screen&quot;
+    postctx.filter = 'blur(16px)'
+    postctx.drawImage(canvas, 0, 0)
+    postctx.filter = 'blur(0)'
+    postctx.globalCompositeOperation = &quot;source-over&quot;
+
+    requestAnimationFrame(loop)
+  }
+
+  // Generating dots
+  for (let i = 0; i &lt; vertexCount; i++) {
+    let x = i % oceanWidth
+    let y = 0
+    let z = i / oceanWidth &gt;&gt; 0
+    let offset = oceanWidth / 2
+    vertices.push([(-offset + x) * gridSize, y * gridSize, z * gridSize])
+  }
+
+  loop()
+&lt;/script&gt;
+
+&lt;/html&gt;
+</code></pre>
+<p>惊了Σ(っ °Д °;)っ<br>
+<img src="https://guohaomeng.github.io/post-images/1559656298568.png" alt=""><br>
+传送门：<a href="../../../otherfiles/index1.html">粒子海洋特效</a><br>
+看一送一：<a href="../../../otherfiles/clock.html">时钟</a><br>
+ps:注意这个有些占用CPU。。。还有手机端不一定能正常显示</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[网页内嵌网易云插件全过程]]></title>
+        <id>https://guohaomeng.github.io/post/wang-ye-nei-qian-wang-yi-yun-cha-jian-quan-guo-cheng</id>
+        <link href="https://guohaomeng.github.io/post/wang-ye-nei-qian-wang-yi-yun-cha-jian-quan-guo-cheng">
+        </link>
+        <updated>2019-05-17T13:22:30.000Z</updated>
+        <summary type="html"><![CDATA[<p>网页内嵌网易云插件全程</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>网页内嵌网易云插件全程</p>
+<!-- more --> 
+<h2 id="1首先打开网页版网易云">1.首先打开网页版网易云</h2>
+<p>地址：<a href="https://music.163.com">网易云音乐</a></p>
+<h2 id="2搜索自己想要的音乐">2.搜索自己想要的音乐</h2>
+<p><img src="https://guohaomeng.github.io/post-images/1558099917716.png" alt=""><br>
+接下来em......</p>
+<h2 id="3点击生成外链">3.点击生成外链</h2>
+<p><img src="https://guohaomeng.github.io/post-images/1558100163170.png" alt=""><br>
+ps：没有版权的音乐不能生成外链</p>
+<h2 id="4复制生成的代码">4.复制生成的代码</h2>
+<p>想放到哪就把代码粘贴到哪吧~<br>
+<img src="https://guohaomeng.github.io/post-images/1558100280335.png" alt=""><br>
+示例：</p>
+<pre><code>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=28285910&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;
+</code></pre>
+<h2 id="5ok啦-看下效果">5.ok啦。看下效果</h2>
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=1&height=66"></iframe>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[存一些c++代码]]></title>
+        <id>https://guohaomeng.github.io/post/cun-yi-xie-cdai-ma</id>
+        <link href="https://guohaomeng.github.io/post/cun-yi-xie-cdai-ma">
+        </link>
+        <updated>2019-05-01T08:38:25.000Z</updated>
+        <summary type="html"><![CDATA[<p>以待不时之需</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>以待不时之需</p>
+<!-- more -->
+<h3 id="1选择排序">1.选择排序</h3>
+<pre><code class="language-c++">/*选择排序*/
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+   int i,j,min,temp,a[5];
+   cout&lt;&lt;&quot;输入数据&quot;&lt;&lt;endl;
+   for(i=0;i&lt;5;i++)
+   {
+     cout&lt;&lt;&quot;a[&quot;&lt;&lt;i&lt;&lt;&quot;]=&quot;;  //输入数据，存在数组中
+	 cin&gt;&gt;a[i];
+   
+   }
+  
+   cout&lt;&lt;endl&lt;&lt;&quot;原数为&quot;&lt;&lt;endl;
+   for(i=0;i&lt;5;i++)
+	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;   //输出数组，显示
+   cout&lt;&lt;endl;
+   
+   for(i=0;i&lt;5;i++)
+   {
+	   min=i;
+      for(j=i+1;j&lt;5;j++)
+		  if(a[min]&gt;a[j]) //排序，将最小值下标放在min,只要出现比a[min]小的就和a[min]交换，始终让a[min]储存最小值
+			  min=j;
+		  temp=a[i];
+		  a[i]=a[min];
+		  a[min]=temp;
+   
+   
+   }
+   
+   cout&lt;&lt;endl&lt;&lt;&quot;排序后数据为&quot;&lt;&lt;endl;
+   for(i=0;i&lt;5;i++)
+	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;; //输出排序后的数组
+   cout&lt;&lt;endl;
+   
+   return 0;
+
+
+
+}
+</code></pre>
+<h3 id="2结合函数的选择排序">2.结合函数的选择排序</h3>
+<pre><code class="language-c++">#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+   void select_sort(int a[],int n); //函数声明
+
+   int i,a[5];
+
+   cout&lt;&lt;&quot;输入数组&quot;&lt;&lt;endl;
+  for(i=0;i&lt;5;i++)
+   {
+     cout&lt;&lt;&quot;a[&quot;&lt;&lt;i&lt;&lt;&quot;]=&quot;;  //输入数据，存在数组中
+	 cin&gt;&gt;a[i];
+   
+   }
+  
+   cout&lt;&lt;endl&lt;&lt;&quot;原数组为&quot;&lt;&lt;endl;
+   for(i=0;i&lt;5;i++)
+	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;   //输出数组，显示
+   cout&lt;&lt;endl;
+
+   
+   select_sort(a,5);  //调用函数
 
   
+   cout&lt;&lt;endl&lt;&lt;&quot;排序后数组为&quot;&lt;&lt;endl;
+     for(i=0;i&lt;5;i++)
+	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;endl;
+
+   
+   return 0;
+
+
+
+}
+
+void select_sort(int a[], int n)
+{
+    int i,j,temp,min;
+	 for(i=0;i&lt;4;i++)
+   {
+	   min=i;
+      for(j=i+1;j&lt;5;j++)
+		  if(a[min]&gt;a[j]) //排序，将最小值下标放在min,只要出现比a[min]小的就和a[min]交换，始终让a[min]储存最小值
+			  min=j;
+		  temp=a[i];
+		  a[i]=a[min];
+		  a[min]=temp;
+   
+   
+   }
+   
+
+}
+</code></pre>
+<h3 id="3折半调换顺序">3.折半调换顺序</h3>
+<pre><code class="language-c++">/*折半调换顺序*/
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{
+  const int n=5;
+  int a[n],i,temp;
+  cout&lt;&lt;&quot;enter array a&quot;&lt;&lt;endl;
+  for(i=0;i&lt;n;i++)
+	  cin&gt;&gt;a[i];
+  cout&lt;&lt;&quot;array a:&quot;&lt;&lt;endl;
+  for(i=0;i&lt;n;i++)
+	  cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
   
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
-
-      var gitalk = new Gitalk({
-        clientID: 'a58a10e740ada94b81bf',
-        clientSecret: '8296c6564d397f6d7423403a021fd1b573ab6664',
-        repo: 'guohaomeng.github.io',
-        owner: 'guohaomeng',
-        admin: ['guohaomeng'],
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
-    </script>
+  for(i=0;i&lt;n/2;i++)
+  {
+    temp=a[i];
+	a[i]=a[n-i-1];
+	a[n-i-1]=temp;
   
-
   
+  }
+
+ cout&lt;&lt;endl&lt;&lt;&quot;Now, array a:&quot;&lt;&lt;endl;
+ for(i=0;i&lt;n;i++)
+	 cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+ cout&lt;&lt;endl;
+ return 0;
 
 
 
 
-  </body>
-</html>
+}
+</code></pre>
+<h3 id="4折半查找">4.折半查找</h3>
+<pre><code class="language-c++">/*折半查找*/
+#include &lt;iostream&gt;//注意整个程序中标志变量的使用，如flag，sign
+using namespace std;
+int main()
+{ const int n=15;
+  int i,number,top,bott,mid,loca,a[n];
+  bool flag=true,sign;
+  char c;
+  cout&lt;&lt;&quot;enter data:&quot;&lt;&lt;endl;;
+  cin&gt;&gt;a[0];
+  i=1;
+  
+  while(i&lt;n)
+   {cin&gt;&gt;a[i];
+    if (a[i]&gt;=a[i-1])
+      i++;
+    else
+      cout&lt;&lt;&quot;enter this data again:&quot;;//要求输入有序数组
+   }
+  cout&lt;&lt;endl;
+  
+  for (i=0;i&lt;n;i++)
+    cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+  cout&lt;&lt;endl;
+  
+  while(flag)
+    {cout&lt;&lt;&quot;input number to look for:&quot;;
+     cin&gt;&gt;number;
+     sign=false;
+     top=0;            //top是查找区间的起始位置
+     bott=n-1;         //bott是查找区间的最末位置
+     
+	 if ((number&lt;a[0])||(number&gt;a[n-1]))  //要查的数不在查找区间内
+       loca=-1;        // 表示找不到
+     
+	 while ((!sign) &amp;&amp; (top&lt;=bott))
+       {mid=(bott+top)/2;
+        if (number==a[mid])
+         {loca=mid;
+          cout&lt;&lt;&quot;Find &quot;&lt;&lt;number&lt;&lt;&quot;, its position is &quot;&lt;&lt;loca+1&lt;&lt;endl;//注意输出位置时下标加1
+		  sign=true;
+         }
+        else if (number&lt;a[mid])
+         bott=mid-1;
+        else
+        top=mid+1;
+       }
+     if(!sign||loca==-1)
+       cout&lt;&lt;number&lt;&lt;&quot; has not found.&quot;&lt;&lt;endl;;
+     
+	 cout&lt;&lt;&quot;continu or not(Y/N)?&quot;;
+     cin&gt;&gt;c;
+     if (c=='N'||c=='n')
+	   flag=false;
+    }
+   return 0;
+ }
+</code></pre>
+<h3 id="5字符数组的调换顺序">5.字符数组的调换顺序</h3>
+<pre><code class="language-c++">/*字符数组的调换顺序*/
+#include &lt;iostream&gt;
+using namespace std;
+int main()
+{ const n=10;
+ int i;
+ char a[n],temp;
+ cout&lt;&lt;&quot;please input a string:&quot;;
+ for(i=0;i&lt;n;i++)
+     cin&gt;&gt;a[i];
+ for(i=0;i&lt;n/2;i++)
+ {temp=a[i];a[i]=a[n-i-1];a[n-i-1]=temp;}
+ for(i=0;i&lt;n;i++)
+     cout&lt;&lt;a[i];
+ cout&lt;&lt;endl;
+ return 0;
+}
+</code></pre>
+<h3 id="6字符串的调换顺序">6.字符串的调换顺序</h3>
+<pre><code class="language-c++">/*字符串的调换顺序*/
+#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main()
+{ string a;
+  int i,n;
+  char temp;
+  
+  cout&lt;&lt;&quot;please input a string:&quot;;
+  cin&gt;&gt;a;
+ 
+  n=a.size();
+ 
+  for(i=0;i&lt;n/2;i++)
+  {temp=a[i];a[i]=a[n-i-1];a[n-i-1]=temp;}
+ 
+  cout&lt;&lt;a&lt;&lt;endl;
+  
+  return 0;
+}
+</code></pre>
+<p>c++真难〒▽〒</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[《只要平凡》----平凡却也伟大]]></title>
+        <id>https://guohaomeng.github.io/post/lesslesszhi-yao-ping-fan-greatergreater-ping-fan-que-ye-wei-da</id>
+        <link href="https://guohaomeng.github.io/post/lesslesszhi-yao-ping-fan-greatergreater-ping-fan-que-ye-wei-da">
+        </link>
+        <updated>2019-04-30T00:45:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>致敬小人物，致敬生命。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>致敬小人物，致敬生命。</p>
+<!-- more -->
+<p><center>也许很远或是昨天</center></p>
+<p><center>在这里或在对岸</center></p>
+<p><center>长路辗转离合悲欢</center></p>
+<p><center>人聚又人散</center></p>
+<p><center>放过对错才知答案</center></p>
+<p><center>活着的勇敢</center></p>
+<p><center>没有神的光环</center></p>
+<p><center>你我生而平凡</center></p>
+<p><center>在心碎中认清遗憾</center></p>
+<p><center>生命漫长也短暂</center></p>
+<p><center>跳动心脏长出藤蔓</center></p>
+<p><center>愿为险而战</center></p>
+<p><center>跌入灰暗坠入深渊</center></p>
+<p><center>沾满泥土的脸</center></p>
+<p><center>没有神的光环</center></p>
+<p><center>握紧手中的平凡</center></p>
+<p><center>此心此生无憾</center></p>
+<p><center>生命的火已点燃</center></p>
+<p><center>有一天也许会走远</center></p>
+<p><center>也许还能再相见</center></p>
+<p><center>无论在人群在天边</center></p>
+<p><center>让我再看清你的脸</center></p>
+<p><center>任泪水铺满了双眼</center></p>
+<p><center>虽无言泪满面</center></p>
+<p><center>不要神的光环</center></p>
+<p><center>只要你的平凡</center></p>
+<p><center>在心碎中认清遗憾</center></p>
+<p><center>生命漫长也短暂</center></p>
+<p><center>跳动心脏长出藤蔓</center></p>
+<p><center>愿为险而战</center></p>
+<p><center>跌入灰暗坠入深渊</center></p>
+<p><center>沾满泥土的脸</center></p>
+<p><center>没有神的光环</center></p>
+<p><center>握紧手中的平凡</center></p>
+<p><center>有一天也许会走远</center></p>
+<p><center>也许还能再相见</center></p>
+<p><center>无论在人群在天边</center></p>
+<p><center>让我再看清你的脸</center></p>
+<p><center>任泪水铺满了双眼</center></p>
+<p><center>虽无言泪满面</center></p>
+<p><center>不要神的光环</center></p>
+<p><center>只要你的平凡</center></p>
+<p><center>此心此生无憾</center></p>
+<p><center>生命的火已点燃</center></p>
+<br />
+<center><embed  height = "0" width ="0" loop="true"
+							 src="http://wp.zp68.com/sub/filestores/2018/07/09/24d970201fab1c60822429932c9c750d.mp3" /></center>
+]]></content>
+    </entry>
+</feed>
