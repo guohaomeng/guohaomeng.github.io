@@ -13,20 +13,30 @@
 }
 #waifu {
 	position: fixed;
-	bottom: -1000px;
+	bottom: 0px;
 	left: 0;
 	z-index: 1;
 	line-height: 0;
+	transform-origin(left,bottom);
 	transition: transform .3s ease-in-out;
 	transform: translateY(3px);
 }
 #waifu:hover {
+	transform-origin(left,bottom);
 	transform: translateY(0);
 }
 @media (max-width: 468px) {
 	#waifu {
-		transform:scale(0.5);
-	
+		transform-origin(left,bottom);
+		transform:scale(0.4);
+		bottom:0;
+		left:0;
+	}
+	#waifu:hover{
+		transform-origin(left,bottom);
+		transform:scale(0.4);
+		bottom:0;
+		left:0;
 	}
 }
 #waifu-tips {
