@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://guohaomeng.github.io</id>
     <title>meng的博客</title>
-    <updated>2019-10-02T10:28:32.113Z</updated>
+    <updated>2019-10-02T13:23:29.806Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://guohaomeng.github.io"/>
     <link rel="self" href="https://guohaomeng.github.io/atom.xml"/>
@@ -10,6 +10,37 @@
     <logo>https://guohaomeng.github.io/images/avatar.png</logo>
     <icon>https://guohaomeng.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, meng的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[关于如何在gredia中为网页引入“看板娘”]]></title>
+        <id>https://guohaomeng.github.io/post/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang</id>
+        <link href="https://guohaomeng.github.io/post/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang">
+        </link>
+        <updated>2019-10-02T12:10:46.000Z</updated>
+        <summary type="html"><![CDATA[<p>介绍下引入看板娘的最简单的方法，只能引入不能定制，能定制的以后再发~</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>介绍下引入看板娘的最简单的方法，只能引入不能定制，能定制的以后再发~</p>
+<!-- more -->
+<h1 id="一-代码准备">一 代码准备</h1>
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css&quot;&gt;
+</code></pre>
+<p>这两个是live2d看板娘所需的依赖，一个是jQuery，另一个是fontawesome。gridea这俩好像都没有，我们稍后把它引入。</p>
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>autoload.js--自动加载看板娘</p>
+<h1 id="使用">使用</h1>
+<p>由于gridea的静态页面都是有对应主题里的模板文件在生成，后同步到GitHub上去的，每次点击同步便会重新生成所有文章页面依次，因此我们应该直接修改模板文件。<br>
+进入gridea目录，一般在文档-Gridea文件夹，依次themes-simple-templates-_blocks,找到sidebar.ejs与head.ejs这俩模板文件，在head.ejs中head标签中加入前两行代码<br>
+<img src="https://guohaomeng.github.io/post-images/1570021648543.jpg" alt=""><br>
+在sidebar.ejs中加入第三行代码<br>
+<img src="https://guohaomeng.github.io/post-images/1570021801167.jpg" alt=""><br>
+保存一下。再打开gridea，点击同步，用新的模板生成一遍文章，并同步到GitHub。<br>
+打开浏览器，访问下博客，好了，看板娘出现在了左下角。<br>
+<img src="https://guohaomeng.github.io/post-images/1570022350759.jpg" alt=""></p>
+<h1 id="over">over</h1>
+<p>有问题请留言哦~</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[用VScode写c/c++]]></title>
         <id>https://guohaomeng.github.io/post/yong-vscode-xie-cc</id>
@@ -2021,65 +2052,6 @@ int main()
 }
 </code></pre>
 <p>c++真难〒▽〒</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[《只要平凡》----平凡却也伟大]]></title>
-        <id>https://guohaomeng.github.io/post/lesslesszhi-yao-ping-fan-greatergreater-ping-fan-que-ye-wei-da</id>
-        <link href="https://guohaomeng.github.io/post/lesslesszhi-yao-ping-fan-greatergreater-ping-fan-que-ye-wei-da">
-        </link>
-        <updated>2019-04-30T00:45:21.000Z</updated>
-        <summary type="html"><![CDATA[<p>致敬小人物，致敬生命。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>致敬小人物，致敬生命。</p>
-<!-- more -->
-<p><center>也许很远或是昨天</center></p>
-<p><center>在这里或在对岸</center></p>
-<p><center>长路辗转离合悲欢</center></p>
-<p><center>人聚又人散</center></p>
-<p><center>放过对错才知答案</center></p>
-<p><center>活着的勇敢</center></p>
-<p><center>没有神的光环</center></p>
-<p><center>你我生而平凡</center></p>
-<p><center>在心碎中认清遗憾</center></p>
-<p><center>生命漫长也短暂</center></p>
-<p><center>跳动心脏长出藤蔓</center></p>
-<p><center>愿为险而战</center></p>
-<p><center>跌入灰暗坠入深渊</center></p>
-<p><center>沾满泥土的脸</center></p>
-<p><center>没有神的光环</center></p>
-<p><center>握紧手中的平凡</center></p>
-<p><center>此心此生无憾</center></p>
-<p><center>生命的火已点燃</center></p>
-<p><center>有一天也许会走远</center></p>
-<p><center>也许还能再相见</center></p>
-<p><center>无论在人群在天边</center></p>
-<p><center>让我再看清你的脸</center></p>
-<p><center>任泪水铺满了双眼</center></p>
-<p><center>虽无言泪满面</center></p>
-<p><center>不要神的光环</center></p>
-<p><center>只要你的平凡</center></p>
-<p><center>在心碎中认清遗憾</center></p>
-<p><center>生命漫长也短暂</center></p>
-<p><center>跳动心脏长出藤蔓</center></p>
-<p><center>愿为险而战</center></p>
-<p><center>跌入灰暗坠入深渊</center></p>
-<p><center>沾满泥土的脸</center></p>
-<p><center>没有神的光环</center></p>
-<p><center>握紧手中的平凡</center></p>
-<p><center>有一天也许会走远</center></p>
-<p><center>也许还能再相见</center></p>
-<p><center>无论在人群在天边</center></p>
-<p><center>让我再看清你的脸</center></p>
-<p><center>任泪水铺满了双眼</center></p>
-<p><center>虽无言泪满面</center></p>
-<p><center>不要神的光环</center></p>
-<p><center>只要你的平凡</center></p>
-<p><center>此心此生无憾</center></p>
-<p><center>生命的火已点燃</center></p>
-<br />
-<center><embed  height = "0" width ="0" loop="true"
-							 src="http://wp.zp68.com/sub/filestores/2018/07/09/24d970201fab1c60822429932c9c750d.mp3" /></center>
 ]]></content>
     </entry>
 </feed>

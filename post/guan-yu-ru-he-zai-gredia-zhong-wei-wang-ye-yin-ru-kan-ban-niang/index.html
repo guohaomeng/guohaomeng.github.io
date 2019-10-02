@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>Hello Gridea | meng的博客</title>
+<title>关于如何在gredia中为网页引入“看板娘” | meng的博客</title>
 <meta name="description" content="温故而知新">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -107,45 +107,46 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">Hello Gridea</h2>
-            <div class="post-date">2018-12-12</div>
+            <h2 class="post-title">关于如何在gredia中为网页引入“看板娘”</h2>
+            <div class="post-date">2019-10-02</div>
             
-              <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/hello-gridea.png')">
+              <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang.jpg')">
               </div>
             
             <div class="post-content">
-              <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+              <p>介绍下引入看板娘的最简单的方法，只能引入不能定制，能定制的以后再发~</p>
 <!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="http://hvenotes.fehey.com/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>𝖶𝗂𝗇𝖽𝗈𝗐𝗌</strong> 或 <strong>𝖬𝖺𝖼𝖮𝖲</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+<h1 id="一-代码准备">一 代码准备</h1>
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css&quot;&gt;
+</code></pre>
+<p>这两个是live2d看板娘所需的依赖，一个是jQuery，另一个是fontawesome。gridea这俩好像都没有，我们稍后把它引入。</p>
+<pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>autoload.js--自动加载看板娘</p>
+<h1 id="使用">使用</h1>
+<p>由于gridea的静态页面都是有对应主题里的模板文件在生成，后同步到GitHub上去的，每次点击同步便会重新生成所有文章页面依次，因此我们应该直接修改模板文件。<br>
+进入gridea目录，一般在文档-Gridea文件夹，依次themes-simple-templates-_blocks,找到sidebar.ejs与head.ejs这俩模板文件，在head.ejs中head标签中加入前两行代码<br>
+<img src="https://guohaomeng.github.io/post-images/1570021648543.jpg" alt=""><br>
+在sidebar.ejs中加入第三行代码<br>
+<img src="https://guohaomeng.github.io/post-images/1570021801167.jpg" alt=""><br>
+保存一下。再打开gridea，点击同步，用新的模板生成一遍文章，并同步到GitHub。<br>
+打开浏览器，访问下博客，好了，看板娘出现在了左下角。<br>
+<img src="https://guohaomeng.github.io/post-images/1570022350759.jpg" alt=""></p>
+<h1 id="over">over</h1>
+<p>有问题请留言哦~</p>
 
             </div>
             
-              <div class="tag-container">
-                
-                  <a href="https://guohaomeng.github.io/tag/gridea" class="tag">
-                    Gridea
-                  </a>
-                
-              </div>
             
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://guohaomeng.github.io/post/yong-vscode-xie-cc">
+                  <h3 class="post-title">
+                    用VScode写c/c++
+                  </h3>
+                </a>
+              </div>
             
 
             
