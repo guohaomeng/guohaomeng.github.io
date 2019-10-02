@@ -1,10 +1,10 @@
 {
 	"mouseover": [{
 		"selector": "#waifu #live2d",
-		"text": ["666666", "55555555····", "你要干嘛呀？", "喵喵喵？", "怕怕(ノ≧∇≦)ノ", "非礼呀！救命！", "这样的话，只能使用武力了！", "我要生气了哦", "不要动手动脚的！", "真…真的是不知羞耻！", "Hentai！"]
+		"text": ["666666", "55555555····", "你要干嘛呀？", "喵喵喵？", "哦吼(ノ≧∇≦)ノ", "非礼呀！救命！", "？？？？！", "我要生气了哦", "不要动手动脚的！", "emmm····我是被复制粘贴过来的~", "Hentai！"]
 	}, {
 		"selector": "#waifu-tool .fa-comment",
-		"text": ["猜猜我要说些什么？", "我从meng那里听到了不少人生经验。"]
+		"text": ["猜猜我要说些什么？", "现在几点了？？"]
 	}, {
 		"selector": "#waifu-tool .fa-paper-plane",
 		"text": ["要不要来玩飞机大战？", "这个按钮上写着“不要点击”。", "怎么，你想来和我玩个游戏？", "听说这样可以蹦迪！"]
@@ -63,11 +63,11 @@
 		"selector": "#qrcode",
 		"text": ["手机扫一下就能继续看，很方便呢～", "扫一扫，打开新世界的大门！"]
 	}, {
-		"selector": ".fancybox img, img.medium-zoom-image",
-		"text": ["点击图片可以放大呢！"]
+		"selector": ".post-content img",
+		"text": ["这张图片怎么样呢？","beautiful!"]
 	}, {
-		"selector": ".highlight-wrap, .gist",
-		"text": ["代码可以直接点击复制哟。", "GitHub！我是新手！", "PHP 是最好的语言！"]
+		"selector": ".hljs objectivec",
+		"text": ["代码可以直接复制哟。", "GitHub！我是新手！", "希加加是最好的语言！"]
 	}, {
 		"selector": ".container a[href^='http'], .nav-link .nav-text",
 		"text": ["要去看看 <span style=\"color:#0099cc;\">{text}</span> 么？", "去 <span style=\"color:#0099cc;\">{text}</span> 逛逛吧。", "到 <span style=\"color:#0099cc;\">{text}</span> 看看吧。"]
@@ -147,7 +147,7 @@
 		"selector": ".vlink",
 		"text": ["快快告诉我你的家在哪里，好让我去参观参观！"]
 	}, {
-		"selector": ".veditor",
+		"selector": ".gt-header-textarea",
 		"text": ["想要去评论些什么吗？", "要说点什么吗？", "觉得博客不错？快来留言和主人交流吧！"]
 	}, {
 		"selector": ".vcontrol a",
@@ -156,13 +156,13 @@
 		"selector": ".vemoji-btn",
 		"text": ["要插入一个萌萌哒的表情吗？", "要来一发表情吗？"]
 	}, {
-		"selector": ".vpreview-btn",
+		"selector": ".gt-btn gt-btn-preview",
 		"text": ["要预览一下你的发言吗？", "快看看你的评论有多少负熵！"]
 	}, {
 		"selector": ".vsubmit",
 		"text": ["评论没有审核，要对自己的发言负责哦～", "要提交了吗，请耐心等待回复哦～"]
 	}, {
-		"selector": ".vcontent",
+		"selector": ".gt-comment-content",
 		"text": ["哇，快看看这个精彩评论！", "如果有疑问，请尽快留言哦～"]
 	}],
 	"click": [{
