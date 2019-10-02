@@ -81,7 +81,7 @@
 		"selector": "a[href^='/categories/']",
 		"text": ["要去看看 <span style=\"color:#0099cc;\">{text}</span> 分类么？", "点它可以查看此分类下的所有文章哟！"]
 	}, {
-		"selector": ".post-title-link",
+		"selector": ".post-title",
 		"text": ["要看看 <span style=\"color:#0099cc;\">{text}</span> 这篇文章吗？"]
 	}, {
 		"selector": "a[rel='contents']",
