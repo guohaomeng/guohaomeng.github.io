@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://guohaomeng.github.io</id>
     <title>meng的博客</title>
-    <updated>2019-10-02T13:23:29.806Z</updated>
+    <updated>2019-10-02T13:30:15.177Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://guohaomeng.github.io"/>
     <link rel="self" href="https://guohaomeng.github.io/atom.xml"/>
@@ -16,11 +16,11 @@
         <link href="https://guohaomeng.github.io/post/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang">
         </link>
         <updated>2019-10-02T12:10:46.000Z</updated>
-        <summary type="html"><![CDATA[<p>介绍下引入看板娘的最简单的方法，只能引入不能定制，能定制的以后再发~</p>
+        <summary type="html"><![CDATA[<p>介绍下引入看板娘的最简单的方法，但注意只能引入不能定制，相当于把别人写好的看板娘拿来放到自己网页上。能定制的以后我找时间再发~</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>介绍下引入看板娘的最简单的方法，只能引入不能定制，能定制的以后再发~</p>
+        <content type="html"><![CDATA[<p>介绍下引入看板娘的最简单的方法，但注意只能引入不能定制，相当于把别人写好的看板娘拿来放到自己网页上。能定制的以后我找时间再发~</p>
 <!-- more -->
-<h1 id="一-代码准备">一 代码准备</h1>
+<h1 id="一-代码准备">一、代码准备</h1>
 <pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css&quot;&gt;
 </code></pre>
@@ -28,7 +28,7 @@
 <pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 <p>autoload.js--自动加载看板娘</p>
-<h1 id="使用">使用</h1>
+<h1 id="二-使用">二、使用</h1>
 <p>由于gridea的静态页面都是有对应主题里的模板文件在生成，后同步到GitHub上去的，每次点击同步便会重新生成所有文章页面依次，因此我们应该直接修改模板文件。<br>
 进入gridea目录，一般在文档-Gridea文件夹，依次themes-simple-templates-_blocks,找到sidebar.ejs与head.ejs这俩模板文件，在head.ejs中head标签中加入前两行代码<br>
 <img src="https://guohaomeng.github.io/post-images/1570021648543.jpg" alt=""><br>
@@ -37,7 +37,7 @@
 保存一下。再打开gridea，点击同步，用新的模板生成一遍文章，并同步到GitHub。<br>
 打开浏览器，访问下博客，好了，看板娘出现在了左下角。<br>
 <img src="https://guohaomeng.github.io/post-images/1570022350759.jpg" alt=""></p>
-<h1 id="over">over</h1>
+<h1 id="三-over">三、over</h1>
 <p>有问题请留言哦~</p>
 ]]></content>
     </entry>
