@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://guohaomeng.github.io</id>
     <title>meng的博客</title>
-    <updated>2019-10-02T13:35:29.134Z</updated>
+    <updated>2019-11-06T15:23:53.750Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://guohaomeng.github.io"/>
     <link rel="self" href="https://guohaomeng.github.io/atom.xml"/>
@@ -10,6 +10,72 @@
     <logo>https://guohaomeng.github.io/images/avatar.png</logo>
     <icon>https://guohaomeng.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, meng的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[git简易教程（二）]]></title>
+        <id>https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng-er</id>
+        <link href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng-er">
+        </link>
+        <updated>2019-11-06T15:04:49.000Z</updated>
+        <summary type="html"><![CDATA[<p>git的初始配置及基本用法</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>git的初始配置及基本用法</p>
+<!-- more -->
+<h2 id="一初次运行git前的配置">一·初次运行git前的配置</h2>
+<ol>
+<li>当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：<br>
+git config --global user.name &quot;你的用户名&quot;<br>
+git config --global user.email 你的邮箱@163.com<br>
+第二行**处填邮箱</li>
+</ol>
+<h2 id="二获取git仓库">二·获取git仓库</h2>
+<p>两种获取Git项目仓库的方法： 一是在现有项目或目录下导入所有文件到Git中； 二是从一个服务器克隆一个现有的Git仓库。</p>
+<ol>
+<li>在现有目录中初始化仓库，进入该目录，右键git bash here<br>
+git init<br>
+该命令将创建一个名为 .git 的子目录，这个子目录含有你初始化的 Git 仓库中所有的必须文件，这些文件是 Git 仓库的骨干。</li>
+<li>克隆远程仓库，示例，克隆一下咱们网络信息协会的teamwork测试仓库<br>
+git clone https://github.com/wlxxxh/teamwork.git<br>
+克隆地址可以从这里复制<br>
+<img src="https://guohaomeng.github.io/post-images/1573053650627.jpg" alt=""></li>
+<li></li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[git简易教程（一）]]></title>
+        <id>https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng</id>
+        <link href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng">
+        </link>
+        <updated>2019-11-06T09:54:50.000Z</updated>
+        <summary type="html"><![CDATA[<p>包括GitHub的注册以及git的安装</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>包括GitHub的注册以及git的安装</p>
+<!-- more -->
+<h2 id="一github的注册">一·GitHub的注册</h2>
+<p>首先，进入<a href="https://github.com/">GitHub的官网</a></p>
+<figure data-type="image" tabindex="1"><img src="https://guohaomeng.github.io/post-images/1573034456678.jpg" alt=""></figure>
+<p>直接填写用户名、邮箱、密码就行了</p>
+<p>期间要验证一下邮箱，邮箱里点击后跳转登陆就行了<br>
+<img src="https://guohaomeng.github.io/post-images/1573036068386.jpg" alt=""><br>
+恭喜！现在注册完了，你现在已经正式成为GitHub的一员了。<br>
+<img src="https://guohaomeng.github.io/post-images/1573036017274.jpg" alt=""></p>
+<h2 id="二git的安装">二·git的安装</h2>
+<ol>
+<li>前往git官网下载git <a href="https://git-scm.com/">点击前往</a></li>
+<li>除了这个选项，我选Nano，用着简单，对小白友好哎<img src="https://guohaomeng.github.io/post-images/1573051914315.png" alt=""></li>
+<li>其他的一路默认即可(●ˇ∀ˇ●)</li>
+<li><img src="https://guohaomeng.github.io/post-images/1573051499964.jpg" alt=""></li>
+<li><img src="https://guohaomeng.github.io/post-images/1573051529659.png" alt=""></li>
+<li><img src="https://guohaomeng.github.io/post-images/1573051540583.png" alt=""></li>
+<li><img src="https://guohaomeng.github.io/post-images/1573051553207.png" alt=""></li>
+<li><img src="https://guohaomeng.github.io/post-images/1573051605498.png" alt=""></li>
+<li><img src="https://guohaomeng.github.io/post-images/1573051615913.png" alt=""></li>
+<li><img src="https://guohaomeng.github.io/post-images/1573051632465.png" alt=""></li>
+<li>安装完成啦！<br>
+<img src="https://guohaomeng.github.io/post-images/1573051646600.png" alt=""></li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于如何在gredia中为网页引入“看板娘”]]></title>
         <id>https://guohaomeng.github.io/post/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang</id>
@@ -1774,284 +1840,6 @@ int main() {
 传送门：<a href="../../../otherfiles/index1.html">粒子海洋特效</a><br>
 看一送一：<a href="../../../otherfiles/clock.html">时钟</a><br>
 ps:注意这个有些占用CPU。。。还有手机端不一定能正常显示</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[网页内嵌网易云插件全过程]]></title>
-        <id>https://guohaomeng.github.io/post/wang-ye-nei-qian-wang-yi-yun-cha-jian-quan-guo-cheng</id>
-        <link href="https://guohaomeng.github.io/post/wang-ye-nei-qian-wang-yi-yun-cha-jian-quan-guo-cheng">
-        </link>
-        <updated>2019-05-17T13:22:30.000Z</updated>
-        <summary type="html"><![CDATA[<p>网页内嵌网易云插件全程</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>网页内嵌网易云插件全程</p>
-<!-- more --> 
-<h2 id="1首先打开网页版网易云">1.首先打开网页版网易云</h2>
-<p>地址：<a href="https://music.163.com">网易云音乐</a></p>
-<h2 id="2搜索自己想要的音乐">2.搜索自己想要的音乐</h2>
-<p><img src="https://guohaomeng.github.io/post-images/1558099917716.png" alt=""><br>
-接下来em......</p>
-<h2 id="3点击生成外链">3.点击生成外链</h2>
-<p><img src="https://guohaomeng.github.io/post-images/1558100163170.png" alt=""><br>
-ps：没有版权的音乐不能生成外链</p>
-<h2 id="4复制生成的代码">4.复制生成的代码</h2>
-<p>想放到哪就把代码粘贴到哪吧~<br>
-<img src="https://guohaomeng.github.io/post-images/1558100280335.png" alt=""><br>
-示例：</p>
-<pre><code>&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outchain/player?type=2&amp;id=28285910&amp;auto=1&amp;height=66&quot;&gt;&lt;/iframe&gt;
-</code></pre>
-<h2 id="5ok啦-看下效果">5.ok啦。看下效果</h2>
-<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28285910&auto=1&height=66"></iframe>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[存一些c++代码]]></title>
-        <id>https://guohaomeng.github.io/post/cun-yi-xie-cdai-ma</id>
-        <link href="https://guohaomeng.github.io/post/cun-yi-xie-cdai-ma">
-        </link>
-        <updated>2019-05-01T08:38:25.000Z</updated>
-        <summary type="html"><![CDATA[<p>以待不时之需</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>以待不时之需</p>
-<!-- more -->
-<h3 id="1选择排序">1.选择排序</h3>
-<pre><code class="language-c++">/*选择排序*/
-#include &lt;iostream&gt;
-using namespace std;
-int main()
-{
-   int i,j,min,temp,a[5];
-   cout&lt;&lt;&quot;输入数据&quot;&lt;&lt;endl;
-   for(i=0;i&lt;5;i++)
-   {
-     cout&lt;&lt;&quot;a[&quot;&lt;&lt;i&lt;&lt;&quot;]=&quot;;  //输入数据，存在数组中
-	 cin&gt;&gt;a[i];
-   
-   }
-  
-   cout&lt;&lt;endl&lt;&lt;&quot;原数为&quot;&lt;&lt;endl;
-   for(i=0;i&lt;5;i++)
-	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;   //输出数组，显示
-   cout&lt;&lt;endl;
-   
-   for(i=0;i&lt;5;i++)
-   {
-	   min=i;
-      for(j=i+1;j&lt;5;j++)
-		  if(a[min]&gt;a[j]) //排序，将最小值下标放在min,只要出现比a[min]小的就和a[min]交换，始终让a[min]储存最小值
-			  min=j;
-		  temp=a[i];
-		  a[i]=a[min];
-		  a[min]=temp;
-   
-   
-   }
-   
-   cout&lt;&lt;endl&lt;&lt;&quot;排序后数据为&quot;&lt;&lt;endl;
-   for(i=0;i&lt;5;i++)
-	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;; //输出排序后的数组
-   cout&lt;&lt;endl;
-   
-   return 0;
-
-
-
-}
-</code></pre>
-<h3 id="2结合函数的选择排序">2.结合函数的选择排序</h3>
-<pre><code class="language-c++">#include &lt;iostream&gt;
-using namespace std;
-int main()
-{
-   void select_sort(int a[],int n); //函数声明
-
-   int i,a[5];
-
-   cout&lt;&lt;&quot;输入数组&quot;&lt;&lt;endl;
-  for(i=0;i&lt;5;i++)
-   {
-     cout&lt;&lt;&quot;a[&quot;&lt;&lt;i&lt;&lt;&quot;]=&quot;;  //输入数据，存在数组中
-	 cin&gt;&gt;a[i];
-   
-   }
-  
-   cout&lt;&lt;endl&lt;&lt;&quot;原数组为&quot;&lt;&lt;endl;
-   for(i=0;i&lt;5;i++)
-	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;   //输出数组，显示
-   cout&lt;&lt;endl;
-
-   
-   select_sort(a,5);  //调用函数
-
-  
-   cout&lt;&lt;endl&lt;&lt;&quot;排序后数组为&quot;&lt;&lt;endl;
-     for(i=0;i&lt;5;i++)
-	   cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
-    cout&lt;&lt;endl;
-
-   
-   return 0;
-
-
-
-}
-
-void select_sort(int a[], int n)
-{
-    int i,j,temp,min;
-	 for(i=0;i&lt;4;i++)
-   {
-	   min=i;
-      for(j=i+1;j&lt;5;j++)
-		  if(a[min]&gt;a[j]) //排序，将最小值下标放在min,只要出现比a[min]小的就和a[min]交换，始终让a[min]储存最小值
-			  min=j;
-		  temp=a[i];
-		  a[i]=a[min];
-		  a[min]=temp;
-   
-   
-   }
-   
-
-}
-</code></pre>
-<h3 id="3折半调换顺序">3.折半调换顺序</h3>
-<pre><code class="language-c++">/*折半调换顺序*/
-#include &lt;iostream&gt;
-using namespace std;
-int main()
-{
-  const int n=5;
-  int a[n],i,temp;
-  cout&lt;&lt;&quot;enter array a&quot;&lt;&lt;endl;
-  for(i=0;i&lt;n;i++)
-	  cin&gt;&gt;a[i];
-  cout&lt;&lt;&quot;array a:&quot;&lt;&lt;endl;
-  for(i=0;i&lt;n;i++)
-	  cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
-  
-  for(i=0;i&lt;n/2;i++)
-  {
-    temp=a[i];
-	a[i]=a[n-i-1];
-	a[n-i-1]=temp;
-  
-  
-  }
-
- cout&lt;&lt;endl&lt;&lt;&quot;Now, array a:&quot;&lt;&lt;endl;
- for(i=0;i&lt;n;i++)
-	 cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
- cout&lt;&lt;endl;
- return 0;
-
-
-
-
-}
-</code></pre>
-<h3 id="4折半查找">4.折半查找</h3>
-<pre><code class="language-c++">/*折半查找*/
-#include &lt;iostream&gt;//注意整个程序中标志变量的使用，如flag，sign
-using namespace std;
-int main()
-{ const int n=15;
-  int i,number,top,bott,mid,loca,a[n];
-  bool flag=true,sign;
-  char c;
-  cout&lt;&lt;&quot;enter data:&quot;&lt;&lt;endl;;
-  cin&gt;&gt;a[0];
-  i=1;
-  
-  while(i&lt;n)
-   {cin&gt;&gt;a[i];
-    if (a[i]&gt;=a[i-1])
-      i++;
-    else
-      cout&lt;&lt;&quot;enter this data again:&quot;;//要求输入有序数组
-   }
-  cout&lt;&lt;endl;
-  
-  for (i=0;i&lt;n;i++)
-    cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
-  cout&lt;&lt;endl;
-  
-  while(flag)
-    {cout&lt;&lt;&quot;input number to look for:&quot;;
-     cin&gt;&gt;number;
-     sign=false;
-     top=0;            //top是查找区间的起始位置
-     bott=n-1;         //bott是查找区间的最末位置
-     
-	 if ((number&lt;a[0])||(number&gt;a[n-1]))  //要查的数不在查找区间内
-       loca=-1;        // 表示找不到
-     
-	 while ((!sign) &amp;&amp; (top&lt;=bott))
-       {mid=(bott+top)/2;
-        if (number==a[mid])
-         {loca=mid;
-          cout&lt;&lt;&quot;Find &quot;&lt;&lt;number&lt;&lt;&quot;, its position is &quot;&lt;&lt;loca+1&lt;&lt;endl;//注意输出位置时下标加1
-		  sign=true;
-         }
-        else if (number&lt;a[mid])
-         bott=mid-1;
-        else
-        top=mid+1;
-       }
-     if(!sign||loca==-1)
-       cout&lt;&lt;number&lt;&lt;&quot; has not found.&quot;&lt;&lt;endl;;
-     
-	 cout&lt;&lt;&quot;continu or not(Y/N)?&quot;;
-     cin&gt;&gt;c;
-     if (c=='N'||c=='n')
-	   flag=false;
-    }
-   return 0;
- }
-</code></pre>
-<h3 id="5字符数组的调换顺序">5.字符数组的调换顺序</h3>
-<pre><code class="language-c++">/*字符数组的调换顺序*/
-#include &lt;iostream&gt;
-using namespace std;
-int main()
-{ const n=10;
- int i;
- char a[n],temp;
- cout&lt;&lt;&quot;please input a string:&quot;;
- for(i=0;i&lt;n;i++)
-     cin&gt;&gt;a[i];
- for(i=0;i&lt;n/2;i++)
- {temp=a[i];a[i]=a[n-i-1];a[n-i-1]=temp;}
- for(i=0;i&lt;n;i++)
-     cout&lt;&lt;a[i];
- cout&lt;&lt;endl;
- return 0;
-}
-</code></pre>
-<h3 id="6字符串的调换顺序">6.字符串的调换顺序</h3>
-<pre><code class="language-c++">/*字符串的调换顺序*/
-#include &lt;iostream&gt;
-#include &lt;string&gt;
-using namespace std;
-int main()
-{ string a;
-  int i,n;
-  char temp;
-  
-  cout&lt;&lt;&quot;please input a string:&quot;;
-  cin&gt;&gt;a;
- 
-  n=a.size();
- 
-  for(i=0;i&lt;n/2;i++)
-  {temp=a[i];a[i]=a[n-i-1];a[n-i-1]=temp;}
- 
-  cout&lt;&lt;a&lt;&lt;endl;
-  
-  return 0;
-}
-</code></pre>
-<p>c++真难〒▽〒</p>
 ]]></content>
     </entry>
 </feed>
