@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://guohaomeng.github.io</id>
     <title>meng的博客</title>
-    <updated>2019-11-07T13:45:50.540Z</updated>
+    <updated>2019-11-07T13:54:21.246Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://guohaomeng.github.io"/>
     <link rel="self" href="https://guohaomeng.github.io/atom.xml"/>
@@ -114,6 +114,9 @@ To https://github.com/wlxxxh/teamwork.git
 ]]></summary>
         <content type="html"><![CDATA[<p>包括GitHub的注册以及git的安装</p>
 <!-- more -->
+<p><span style="color:red;">先放上网上大神的git安装教程镇楼：<br>
+<a href="https://blog.csdn.net/u013295518/article/details/78746007">https://blog.csdn.net/u013295518/article/details/78746007</a><br>
+</span></p>
 <h2 id="一github的注册">一·GitHub的注册</h2>
 <p>首先，进入<a href="https://github.com/">GitHub的官网</a></p>
 <figure data-type="image" tabindex="1"><img src="https://guohaomeng.github.io/post-images/1573034456678.jpg" alt=""></figure>
