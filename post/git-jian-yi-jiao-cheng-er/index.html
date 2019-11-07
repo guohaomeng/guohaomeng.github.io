@@ -10,7 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1573053786003">
+<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1573134282892">
 <link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
 
 
@@ -45,7 +45,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://guohaomeng.github.io">
-        <img src="https://guohaomeng.github.io/images/avatar.png?v=1573053786003" class="site-logo">
+        <img src="https://guohaomeng.github.io/images/avatar.png?v=1573134282892" class="site-logo">
         <h1 class="site-title">meng的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -115,22 +115,85 @@
 <!-- more -->
 <h2 id="一初次运行git前的配置">一·初次运行git前的配置</h2>
 <ol>
-<li>当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：<br>
-git config --global user.name &quot;你的用户名&quot;<br>
-git config --global user.email 你的邮箱@163.com<br>
-第二行**处填邮箱</li>
+<li>当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：</li>
 </ol>
+<pre><code>git config --global user.name &quot;你的用户名&quot;
+git config --global user.email 你的邮箱@163.com
+</code></pre>
+<p>第二行**处填邮箱</p>
 <h2 id="二获取git仓库">二·获取git仓库</h2>
 <p>两种获取Git项目仓库的方法： 一是在现有项目或目录下导入所有文件到Git中； 二是从一个服务器克隆一个现有的Git仓库。</p>
 <ol>
-<li>在现有目录中初始化仓库，进入该目录，右键git bash here<br>
-git init<br>
-该命令将创建一个名为 .git 的子目录，这个子目录含有你初始化的 Git 仓库中所有的必须文件，这些文件是 Git 仓库的骨干。</li>
-<li>克隆远程仓库，示例，克隆一下咱们网络信息协会的teamwork测试仓库<br>
-git clone https://github.com/wlxxxh/teamwork.git<br>
-克隆地址可以从这里复制<br>
-<img src="https://guohaomeng.github.io/post-images/1573053650627.jpg" alt=""></li>
-<li></li>
+<li>在现有目录中初始化仓库，进入该目录，右键git bash here</li>
+</ol>
+<pre><code>git init
+</code></pre>
+<p>该命令将创建一个名为 .git 的子目录，这个子目录含有你初始化的 Git 仓库中所有的必须文件，这些文件是 Git 仓库的骨干。<br>
+2. 克隆远程仓库，示例，克隆一下咱们网络信息协会的teamwork测试仓库</p>
+<pre><code>git clone https://github.com/wlxxxh/teamwork.git
+</code></pre>
+<p>该命令执行后会在当前目录下创建一个名为 “teamwork” 的目录，并在在这个目录下初始化一个.git文件夹，从远程仓库拉取所有的数据放在改文件夹，然后从中读取最新版本的文件的拷贝。 如果你进入到这个新建的 teamwork 文件夹，你会发现所有的项目文件已经在里面了，准备就绪等待后续的开发和使用。</p>
+<p>克隆地址可以从这里复制<br>
+<img src="https://guohaomeng.github.io/post-images/1573053650627.jpg" alt=""></p>
+<h2 id="三git基本操作">三·git基本操作</h2>
+<p>上面，我们已经克隆了teamwork仓库到本地了，现在给大家演示一下基本操作，即修改仓库的文件，再将其提交到远程仓库</p>
+<pre><code>$ ls    //列出当前目录下的文件
+001.txt  README.md
+</code></pre>
+<p>比如我们将001.txt内加入一行新的文本 test2<br>
+回到git命令行</p>
+<pre><code>$ git status    //检查仓库状态
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+  (use &quot;git restore &lt;file&gt;...&quot; to discard changes in working directory)
+        modified:   001.txt
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+</code></pre>
+<p>此时会提醒你001.txt文件已经被修改，下面我们将这个修改添加到git暂存区</p>
+<pre><code>$ git add 001.txt   //add命令，将修改提交到暂存区
+ warning: LF will be replaced by CRLF in 001.txt.
+The file will have its original line endings in your working directory
+</code></pre>
+<p>修改后的文件被放到到暂存区后，我们就可以正式提交它了，运行</p>
+<pre><code>$ git commit -m &quot;第二次提交测试&quot; //commit命令，将暂存区文件正式添加到仓库中去，-m 后面跟提交信息，用双引号围起来，提交信息是一定要写的
+    [master 4a6fafe] 第二次提交测试
+1 file changed, 1 insertion(+)
+</code></pre>
+<p>每次更改都要先执行add再执行commit</p>
+<pre><code>git add .   //将当前目录下所有更改都提交到暂存区
+git commit -a -m &quot;提交信息&quot;     //其实如果你觉得 git add 提交缓存的流程太过繁琐，Git 也允许你用 -a 选项跳过这一步。
+</code></pre>
+<p>如果此时我们再检查一下仓库状态</p>
+<pre><code>$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use &quot;git push&quot; to publish your local commits)
+
+nothing to commit, working tree clean
+</code></pre>
+<p>他就会提示现在工作目录是干净的，无需提交了<br>
+下面我们将我们所做的更改推送到远程仓库里去，运行</p>
+<pre><code>$ git push  //push命令，将改动后的代码推送到远程仓库里
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 309 bytes | 309.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0)
+To https://github.com/wlxxxh/teamwork.git
+   d80cde2..4a6fafe  master -&gt; master
+</code></pre>
+<p>现在我们去GitHub远程仓库去看一下，看这个仓库是否已经被更改了<br>
+<img src="https://guohaomeng.github.io/post-images/1573133685551.jpg" alt=""><br>
+果然，成功了，第二行出现了test2<br>
+好了，最基本的git操作就是这样了，关于git的更多用法，大家可以参考这两处哦</p>
+<ol>
+<li><a href="https://blog.csdn.net/daily886/article/details/80140720">https://blog.csdn.net/daily886/article/details/80140720</a></li>
+<li><a href="https://www.runoob.com/git/git-basic-operations.html">https://www.runoob.com/git/git-basic-operations.html</a></li>
 </ol>
 
             </div>
