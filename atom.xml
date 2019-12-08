@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://guohaomeng.github.io</id>
     <title>meng的博客</title>
-    <updated>2019-11-08T08:14:38.031Z</updated>
+    <updated>2019-12-08T14:51:01.341Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://guohaomeng.github.io"/>
     <link rel="self" href="https://guohaomeng.github.io/atom.xml"/>
@@ -10,6 +10,69 @@
     <logo>https://guohaomeng.github.io/images/avatar.png</logo>
     <icon>https://guohaomeng.github.io/favicon.ico</icon>
     <rights>All rights reserved 2019, meng的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[利用光敏电阻检测光强]]></title>
+        <id>https://guohaomeng.github.io/post/li-yong-guang-min-dian-zu-jian-ce-guang-qiang</id>
+        <link href="https://guohaomeng.github.io/post/li-yong-guang-min-dian-zu-jian-ce-guang-qiang">
+        </link>
+        <updated>2019-12-08T14:37:47.000Z</updated>
+        <summary type="html"><![CDATA[<p>利用光敏电阻检测光强</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>利用光敏电阻检测光强</p>
+<!-- more -->
+<h3 id="一原理">一·原理</h3>
+<p>光敏电阻元件的特性便是随着光照的增强，其自身的电阻便会逐渐降低。利用这一特性，我们便可以将其与电阻串联，由电阻分压原理可将光的强弱信号转为电阻大小再转为光敏电阻两端电压大小信号，这样就做成了一个简单的光敏传感器。传感器信号经集成运放放大后再用单片机P1.5引脚读取此值，最后再将读取到的电压值用串口通信输出到串口屏上。</p>
+<h3 id="二具体电路图如下">二·具体电路图如下</h3>
+<p><img src="https://guohaomeng.github.io/post-images/1575816099020.png" alt=""><br>
+该电路中，我们通过msp430的vcc端口供电，电压为3.3V，用10千欧电阻R1与光敏电阻R5串联，由于multisim中没有光敏电阻，我们用100KΩ的滑动变阻器来代替。这样R5两端输出电压便约在0<sub>3.3V之间。由于要求输出信号的范围在0</sub>5V之间，我们再将此信号用集成运放放大（5/3.3）=1.515倍。即1+R4/R3=1.515。R3选取1千欧，则经计算R4选取515欧较为合适。实现了信号放大之后，我们再将放大后的信号用单片机检测出来。由于P1.5引脚读取到的电压模拟量经单片机自身模数转换后被分成1024份，最大检测电压为3.3V。即</p>
+<pre><code>单片机读出的数字量 val = （真实电压值/3.3）*1024
+</code></pre>
+<p>我们将光敏电阻的高电位一端作为待检测信号连接到P1.5，经简单计算可得单片机读取的数字量转换为真实电压值的表达式：</p>
+<pre><code>真实电压值 =（单片机转换后数字量 val/1024）*3.3*1.515
+</code></pre>
+<p>这样即可用单片机检测到真实电压输出值。Msp430单片机具体代码如下：</p>
+<pre><code class="language-c++">#include &lt;Arduino.h&gt;
+
+void LCDprintstring(const String &amp;aa ,const String bb) //向usart hmi 串口屏上**文本打印字符串
+{
+  Serial.print( bb + &quot;.txt=\&quot;&quot; + aa + &quot;\&quot;&quot;);
+  Serial.write(0XFF);
+  Serial.write(0XFF);
+  Serial.write(0XFF);
+  delay(500);
+}
+void LCDprintnum(float &amp;num) //向usart hmi 串口屏上t0文本打印数字
+{
+  Serial.write(&quot;t0.txt=\&quot;&quot;);
+  Serial.print(num);
+  Serial.write(&quot;\&quot;&quot;);
+  Serial.write(0XFF);
+  Serial.write(0XFF);
+  Serial.write(0XFF);
+}
+
+float val1=0;
+void setup()
+{
+  pinMode(P1_5,INPUT);
+  Serial.begin(9600); //设置波特率为9600
+}
+
+void loop()
+{
+  val1=analogRead(P1_5);
+  String data1 = &quot;电压读取值/V&quot;;
+  LCDprintstring(data1,&quot;t1&quot;);
+  delay(250);
+  val1 = (val1/1024)*3.3*1.515;
+  LCDprintnum(val1);
+  delay(250);
+}
+
+</code></pre>
+<p>接下来接线完成啦</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[git简易教程（二）]]></title>
         <id>https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng-er</id>
@@ -1747,166 +1810,6 @@ int main() {
 <img src="https://guohaomeng.github.io/post-images/1559996679954.jpeg" alt=""><br>
 <img src="https://guohaomeng.github.io/post-images/1559996686631.jpeg" alt=""><br>
 <img src="https://guohaomeng.github.io/post-images/1559996692690.jpeg" alt=""></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[简单的代码，不简单的特效]]></title>
-        <id>https://guohaomeng.github.io/post/jian-dan-de-dai-ma-bu-jian-dan-de-te-xiao</id>
-        <link href="https://guohaomeng.github.io/post/jian-dan-de-dai-ma-bu-jian-dan-de-te-xiao">
-        </link>
-        <updated>2019-06-04T13:44:35.000Z</updated>
-        <summary type="html"><![CDATA[<p>150行不到的代码量......</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>150行不到的代码量......</p>
-<!-- more -->
-<h3 id="不废话上代码">不废话，上代码</h3>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;zh-CN&quot;&gt;
-
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
-  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
-  &lt;title&gt;粒子海洋特效&lt;/title&gt;
-&lt;/head&gt;
-&lt;style&gt;
-  canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-&lt;/style&gt;
-
-&lt;body&gt;
-&lt;/body&gt;
-&lt;script&gt;
-  // Init Context 粒子海洋
-  let c = document.createElement('canvas').getContext('2d')
-  let postctx = document.body.appendChild(document.createElement('canvas')).getContext('2d')
-  let canvas = c.canvas
-  let vertices = []
-
-  // Effect Properties
-  let vertexCount = 7000
-  let vertexSize = 3
-  let oceanWidth = 204
-  let oceanHeight = -80
-  let gridSize = 32;
-  let waveSize = 16;
-  let perspective = 100;
-
-  // Common variables
-  let depth = (vertexCount / oceanWidth * gridSize)
-  let frame = 0
-  let { sin, cos, tan, PI } = Math
-
-  // Render loop
-  let loop = () =&gt; {
-    let rad = sin(frame / 100) * PI / 20
-    let rad2 = sin(frame / 50) * PI / 10
-    frame++
-    if (postctx.canvas.width !== postctx.canvas.offsetWidth || postctx.canvas.height !== postctx.canvas.offsetHeight) {
-      postctx.canvas.width = canvas.width = postctx.canvas.offsetWidth
-      postctx.canvas.height = canvas.height = postctx.canvas.offsetHeight
-    }
-
-
-    c.fillStyle = `hsl(200deg, 100%, 2%)`
-    c.fillRect(0, 0, canvas.width, canvas.height)
-    c.save()
-    c.translate(canvas.width / 2, canvas.height / 2)
-
-    c.beginPath()
-    vertices.forEach((vertex, i) =&gt; {
-      let ni = i + oceanWidth
-      let x = vertex[0] - frame % (gridSize * 2)
-      let z = vertex[2] - frame * 2 % gridSize + (i % 2 === 0 ? gridSize / 2 : 0)
-      let wave = (cos(frame / 45 + x / 50) - sin(frame / 20 + z / 50) + sin(frame / 30 + z * x / 10000))
-      let y = vertex[1] + wave * waveSize
-      let a = Math.max(0, 1 - (Math.sqrt(x ** 2 + z ** 2)) / depth)
-      let tx, ty, tz
-
-      y -= oceanHeight
-
-      // Transformation variables
-      tx = x
-      ty = y
-      tz = z
-
-      // Rotation Y
-      tx = x * cos(rad) + z * sin(rad)
-      tz = -x * sin(rad) + z * cos(rad)
-
-      x = tx
-      y = ty
-      z = tz
-
-      // Rotation Z
-      tx = x * cos(rad) - y * sin(rad)
-      ty = x * sin(rad) + y * cos(rad)
-
-      x = tx;
-      y = ty;
-      z = tz;
-
-      // Rotation X
-
-      ty = y * cos(rad2) - z * sin(rad2)
-      tz = y * sin(rad2) + z * cos(rad2)
-
-      x = tx;
-      y = ty;
-      z = tz;
-
-      x /= z / perspective
-      y /= z / perspective
-
-
-
-      if (a &lt; 0.01) return
-      if (z &lt; 0) return
-
-
-      c.globalAlpha = a
-      c.fillStyle = `hsl(${180 + wave * 20}deg, 100%, 50%)`
-      c.fillRect(x - a * vertexSize / 2, y - a * vertexSize / 2, a * vertexSize, a * vertexSize)
-      c.globalAlpha = 1
-    })
-    c.restore()
-
-    // Post-processing
-    postctx.drawImage(canvas, 0, 0)
-
-    postctx.globalCompositeOperation = &quot;screen&quot;
-    postctx.filter = 'blur(16px)'
-    postctx.drawImage(canvas, 0, 0)
-    postctx.filter = 'blur(0)'
-    postctx.globalCompositeOperation = &quot;source-over&quot;
-
-    requestAnimationFrame(loop)
-  }
-
-  // Generating dots
-  for (let i = 0; i &lt; vertexCount; i++) {
-    let x = i % oceanWidth
-    let y = 0
-    let z = i / oceanWidth &gt;&gt; 0
-    let offset = oceanWidth / 2
-    vertices.push([(-offset + x) * gridSize, y * gridSize, z * gridSize])
-  }
-
-  loop()
-&lt;/script&gt;
-
-&lt;/html&gt;
-</code></pre>
-<p>惊了Σ(っ °Д °;)っ<br>
-<img src="https://guohaomeng.github.io/post-images/1559656298568.png" alt=""><br>
-传送门：<a href="../../../otherfiles/index1.html">粒子海洋特效</a><br>
-看一送一：<a href="../../../otherfiles/clock.html">时钟</a><br>
-ps:注意这个有些占用CPU。。。还有手机端不一定能正常显示</p>
 ]]></content>
     </entry>
 </feed>
