@@ -10,7 +10,7 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1575816652338">
+<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1575817331707">
 <link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
 
 
@@ -45,7 +45,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://guohaomeng.github.io">
-        <img src="https://guohaomeng.github.io/images/avatar.png?v=1575816652338" class="site-logo">
+        <img src="https://guohaomeng.github.io/images/avatar.png?v=1575817331707" class="site-logo">
         <h1 class="site-title">meng的博客</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -120,12 +120,18 @@
 <p>光敏电阻元件的特性便是随着光照的增强，其自身的电阻便会逐渐降低。利用这一特性，我们便可以将其与电阻串联，由电阻分压原理可将光的强弱信号转为电阻大小再转为光敏电阻两端电压大小信号，这样就做成了一个简单的光敏传感器。传感器信号经集成运放放大后再用单片机P1.5引脚读取此值，最后再将读取到的电压值用串口通信输出到串口屏上。</p>
 <h3 id="二具体电路图如下">二·具体电路图如下</h3>
 <p><img src="https://guohaomeng.github.io/post-images/1575816099020.png" alt=""><br>
-该电路中，我们通过msp430的vcc端口供电，电压为3.3V，用10千欧电阻R1与光敏电阻R5串联，由于multisim中没有光敏电阻，我们用100KΩ的滑动变阻器来代替。这样R5两端输出电压便约在0<sub>3.3V之间。由于要求输出信号的范围在0</sub>5V之间，我们再将此信号用集成运放放大（5/3.3）=1.515倍。即1+R4/R3=1.515。R3选取1千欧，则经计算R4选取515欧较为合适。实现了信号放大之后，我们再将放大后的信号用单片机检测出来。由于P1.5引脚读取到的电压模拟量经单片机自身模数转换后被分成1024份，最大检测电压为3.3V。即</p>
-<pre><code>单片机读出的数字量 val = （真实电压值/3.3）*1024
-</code></pre>
+该电路中，我们通过msp430的vcc端口供电，电压为3.3V，用10千欧电阻R1与光敏电阻R5串联，由于multisim中没有光敏电阻，我们用100KΩ的滑动变阻器来代替。这样R5两端输出电压便约在0到3.3V之间。由于要求输出信号的范围在0到5V之间，我们再将此信号用集成运放放大（5/3.3）=1.515倍。即</p>
+<blockquote>
+<p>1+R4/R3=1.515</p>
+</blockquote>
+<p>R3选取1千欧，则经计算R4选取515欧较为合适。实现了信号放大之后，我们再将放大后的信号用单片机检测出来。由于P1.5引脚读取到的电压模拟量经单片机自身模数转换后被分成1024份，最大检测电压为3.3V。即</p>
+<blockquote>
+<p>单片机读出的数字量 val = （真实电压值/3.3）*1024</p>
+</blockquote>
 <p>我们将光敏电阻的高电位一端作为待检测信号连接到P1.5，经简单计算可得单片机读取的数字量转换为真实电压值的表达式：</p>
-<pre><code>真实电压值 =（单片机转换后数字量 val/1024）*3.3*1.515
-</code></pre>
+<blockquote>
+<p>真实电压值 =（单片机转换后数字量 val/1024）<em>3.3</em>1.515</p>
+</blockquote>
 <p>这样即可用单片机检测到真实电压输出值。Msp430单片机具体代码如下：</p>
 <pre><code class="language-c++">#include &lt;Arduino.h&gt;
 
@@ -166,7 +172,7 @@ void loop()
 }
 
 </code></pre>
-<p>接下来接线完成啦</p>
+<p>接下来接线就完成啦</p>
 
             </div>
             
