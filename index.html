@@ -1,347 +1,398 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
-
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>meng的博客</title>
-<meta name="description" content="温故而知新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1580220994884">
+<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1586412645666">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <div class="main-content">
+        <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            meng的博客
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
 
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <div class="post-list-container">
+    <div class="post-inner">
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/zai-github-shang-fa-bu-jing-tai-wang-zhan/">
+                            <span class="post-title gt-c-content-color-first">在Github上发布静态网站</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>使用GitHub pages发布静态网页</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2020-01-28 ·
+                        </time>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/zai-github-shang-fa-bu-jing-tai-wang-zhan/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/zai-github-shang-fa-bu-jing-tai-wang-zhan.jpg')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/li-yong-guang-min-dian-zu-jian-ce-guang-qiang/">
+                            <span class="post-title gt-c-content-color-first">利用光敏电阻检测光强</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>利用光敏电阻检测光强</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-12-08 ·
+                        </time>
+                        
+                            <a href="https://guohaomeng.github.io/tag/IxmV7Roib/" class="post-tag">
+                                # 电子设计
+                            </a>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/li-yong-guang-min-dian-zu-jian-ce-guang-qiang/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/li-yong-guang-min-dian-zu-jian-ce-guang-qiang.png')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng-er/">
+                            <span class="post-title gt-c-content-color-first">git简易教程（二）</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>git的初始配置及基本用法</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-11-06 ·
+                        </time>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng-er/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/git-jian-yi-jiao-cheng-er.jpg')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng/">
+                            <span class="post-title gt-c-content-color-first">git简易教程（一）</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>包括GitHub的注册以及git的安装</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-11-06 ·
+                        </time>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/git-jian-yi-jiao-cheng.jpg')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang/">
+                            <span class="post-title gt-c-content-color-first">关于如何在gredia中为网页引入“看板娘”</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>介绍下引入看板娘的最简单的方法，但注意只能引入不能定制，相当于把别人写好的看板娘拿来放到自己网页上。能定制的以后我找时间再发~</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-10-02 ·
+                        </time>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang.jpg')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/yong-vscode-xie-cc/">
+                            <span class="post-title gt-c-content-color-first">用VScode写c/c++</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>本篇文章主要介绍vscode下c/c++的配置，基本原理可以理解为用一个文本编辑器（vscode）+一个编译器（c/c++编译器）组成开发环境，喜欢vscode界面的不要错过。</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-08-18 ·
+                        </time>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/yong-vscode-xie-cc/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/yong-vscode-xie-cc.jpg')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian/">
+                            <span class="post-title gt-c-content-color-first">用vscode写网页----基础安装篇</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>在前端开发中，有一个非常好用的工具，Visual Studio Code，简称VS code。今天就给大家简单介绍下它的使用方法</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-08-10 ·
+                        </time>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian.jpg')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/di-pei-ban-yin-pin-ke-shi-hua-cban/">
+                            <span class="post-title gt-c-content-color-first">低配版音频可视化（c++版）</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>在命令行里一行行打出wav音频文件的时域波形图</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-07-21 ·
+                        </time>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/di-pei-ban-yin-pin-ke-shi-hua-cban/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/di-pei-ban-yin-pin-ke-shi-hua-cban.jpg')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/shi-yi-shi-shi-pin/">
+                            <span class="post-title gt-c-content-color-first">试一试视频</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>看看能不能放上视频（推荐使用chrome浏览器）</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-06-21 ·
+                        </time>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/shi-yi-shi-shi-pin/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/shi-yi-shi-shi-pin.jpg')">
+                    </a>
+                
+            </div>
+        
+            <div class="post gt-bg-theme-color-second">
+                <div class="post-left">
+                    <div>
+                        
+                        <a href="https://guohaomeng.github.io/post/40-dao-ccheng-xu-tian-kong-ti-2/">
+                            <span class="post-title gt-c-content-color-first">40道c++程序填空题（2）</span>
+                        </a>
+                    </div>
+                    <div class="gt-post-content post-abstract gt-c-content-color-second">
+                        <p>第二版</p>
+
+                    </div>
+                    <div class="post-info">
+                        <time class="post-time gt-c-content-color-first">
+                            发布于 · 2019-06-08 ·
+                        </time>
+                        
+                    </div>
+                </div>
+                
+                    <a href="https://guohaomeng.github.io/post/40-dao-ccheng-xu-tian-kong-ti-2/" class="post-feature-image"
+                       style="background-image: url('https://guohaomeng.github.io/post-images/40-dao-ccheng-xu-tian-kong-ti-2.jpg')">
+                    </a>
+                
+            </div>
+        
+    </div>
+</div>
+
+        <div class="pagination-container">
+    
+    
+        <a href="https://guohaomeng.github.io/page/2" class="prev-page gt-a-link">下一页</a>
+    
+</div>
 
 
-
-
-  </head>
-  <body>
-
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-	<div id="jnkc" style="z-index:2;padding-left: 16px;color: #dee2e6;" >时间加载中♪(´▽｀)...
-    <script>
-            document.write("")
-            setInterval("jnkc.innerHTML= '现在是：'+new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
-    </script>
-	</div>
-	<script src="../../otherfiles/live2d/autoload.js"></script>
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://guohaomeng.github.io">
-        <img src="https://guohaomeng.github.io/images/avatar.png?v=1580220994884" class="site-logo">
-        <h1 class="site-title">meng的博客</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
     </div>
     <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://guohaomeng.github.io/atom.xml" target="_blank">RSS</a></a>
     </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      温故而知新
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-    </div>
-  </div>
 </div>
 
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/zai-github-shang-fa-bu-jing-tai-wang-zhan">
-                  <h2 class="post-title">在Github上发布静态网站</h2>
-                </a>
-                <div class="post-date">
-                  2020-01-28
-                </div>
-                <div class="post-abstract">
-                  <p>使用GitHub pages发布静态网页</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/zai-github-shang-fa-bu-jing-tai-wang-zhan">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/zai-github-shang-fa-bu-jing-tai-wang-zhan.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/li-yong-guang-min-dian-zu-jian-ce-guang-qiang">
-                  <h2 class="post-title">利用光敏电阻检测光强</h2>
-                </a>
-                <div class="post-date">
-                  2019-12-08
-                </div>
-                <div class="post-abstract">
-                  <p>利用光敏电阻检测光强</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/li-yong-guang-min-dian-zu-jian-ce-guang-qiang">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/li-yong-guang-min-dian-zu-jian-ce-guang-qiang.png')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng-er">
-                  <h2 class="post-title">git简易教程（二）</h2>
-                </a>
-                <div class="post-date">
-                  2019-11-06
-                </div>
-                <div class="post-abstract">
-                  <p>git的初始配置及基本用法</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng-er">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/git-jian-yi-jiao-cheng-er.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng">
-                  <h2 class="post-title">git简易教程（一）</h2>
-                </a>
-                <div class="post-date">
-                  2019-11-06
-                </div>
-                <div class="post-abstract">
-                  <p>包括GitHub的注册以及git的安装</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/git-jian-yi-jiao-cheng">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/git-jian-yi-jiao-cheng.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang">
-                  <h2 class="post-title">关于如何在gredia中为网页引入“看板娘”</h2>
-                </a>
-                <div class="post-date">
-                  2019-10-02
-                </div>
-                <div class="post-abstract">
-                  <p>介绍下引入看板娘的最简单的方法，但注意只能引入不能定制，相当于把别人写好的看板娘拿来放到自己网页上。能定制的以后我找时间再发~</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/guan-yu-ru-he-zai-gredia-zhong-wei-wang-ye-yin-ru-kan-ban-niang.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/yong-vscode-xie-cc">
-                  <h2 class="post-title">用VScode写c/c++</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-18
-                </div>
-                <div class="post-abstract">
-                  <p>本篇文章主要介绍vscode下c/c++的配置，基本原理可以理解为用一个文本编辑器（vscode）+一个编译器（c/c++编译器）组成开发环境，喜欢vscode界面的不要错过。</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/yong-vscode-xie-cc">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/yong-vscode-xie-cc.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian">
-                  <h2 class="post-title">用vscode写网页----基础安装篇</h2>
-                </a>
-                <div class="post-date">
-                  2019-08-10
-                </div>
-                <div class="post-abstract">
-                  <p>在前端开发中，有一个非常好用的工具，Visual Studio Code，简称VS code。今天就给大家简单介绍下它的使用方法</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/di-pei-ban-yin-pin-ke-shi-hua-cban">
-                  <h2 class="post-title">低配版音频可视化（c++版）</h2>
-                </a>
-                <div class="post-date">
-                  2019-07-21
-                </div>
-                <div class="post-abstract">
-                  <p>在命令行里一行行打出wav音频文件的时域波形图</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/di-pei-ban-yin-pin-ke-shi-hua-cban">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/di-pei-ban-yin-pin-ke-shi-hua-cban.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/shi-yi-shi-shi-pin">
-                  <h2 class="post-title">试一试视频</h2>
-                </a>
-                <div class="post-date">
-                  2019-06-21
-                </div>
-                <div class="post-abstract">
-                  <p>看看能不能放上视频（推荐使用chrome浏览器）</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/shi-yi-shi-shi-pin">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/shi-yi-shi-shi-pin.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://guohaomeng.github.io/post/40-dao-ccheng-xu-tian-kong-ti-2">
-                  <h2 class="post-title">40道c++程序填空题（2）</h2>
-                </a>
-                <div class="post-date">
-                  2019-06-08
-                </div>
-                <div class="post-abstract">
-                  <p>第二版</p>
-
-                </div>
-              </div>
-              
-                <a class="right" href="https://guohaomeng.github.io/post/40-dao-ccheng-xu-tian-kong-ti-2">
-                  <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/40-dao-ccheng-xu-tian-kong-ti-2.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-
-          <div class="pagination-container">
-  
-  
-    <a href="https://guohaomeng.github.io/page/2/" class="next">下一页 <i class="icon-arrow-ios-forward-outline"></i></a>
-  
-</div>
-
-        </div>
-      </div>
-    </div>
-
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-
-<script type="application/javascript">
-
-AOS.init();
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+    hljs.initHighlightingOnLoad()
 </script>
 
-
-
-
-  </body>
+    </div>
+</div>
+</body>
 </html>

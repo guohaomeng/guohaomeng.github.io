@@ -1,132 +1,114 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" >
-
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>用VScode写c/c++ | meng的博客</title>
-<meta name="description" content="温故而知新">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1580220994884">
+<link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1586412645666">
+<link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/go.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
 
 
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
 
-  
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-
-<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-
-
-
-  </head>
-  <body>
-
-    <div id="app" class="main">
-
-      <div class="sidebar" :class="{ 'full-height': menuVisible }">
-	<div id="jnkc" style="z-index:2;padding-left: 16px;color: #dee2e6;" >时间加载中♪(´▽｀)...
-    <script>
-            document.write("")
-            setInterval("jnkc.innerHTML= '现在是：'+new Date().toLocaleString()+' 星期'+'日一二三四五六'.charAt(new Date().getDay());",1000);
-    </script>
-	</div>
-	<script src="../../otherfiles/live2d/autoload.js"></script>
-  <div class="top-container" data-aos="fade-right">
-    <div class="top-header-container">
-      <a class="site-title-container" href="https://guohaomeng.github.io">
-        <img src="https://guohaomeng.github.io/images/avatar.png?v=1580220994884" class="site-logo">
-        <h1 class="site-title">meng的博客</h1>
-      </a>
-      <div class="menu-btn" @click="menuVisible = !menuVisible">
-        <div class="line"></div>
-      </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            meng的博客
+        </div>
     </div>
-    <div>
-      
-        
-          <a href="/" class="site-nav">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="site-nav">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="site-nav">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="site-nav">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
-    <div class="social-container">
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    </div>
-    <div class="site-description">
-      温故而知新
-    </div>
-    <div class="site-footer">
-      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
-    </div>
-  </div>
-</div>
-
-
-      <div class="main-container">
-        <div class="content-container" data-aos="fade-up">
-          <div class="post-detail">
-            <h2 class="post-title">用VScode写c/c++</h2>
-            <div class="post-date">2019-08-18</div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
             
-              <div class="feature-container" style="background-image: url('https://guohaomeng.github.io/post-images/yong-vscode-xie-cc.jpg')">
-              </div>
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
             
-            <div class="post-content">
-              <p>本篇文章主要介绍vscode下c/c++的配置，基本原理可以理解为用一个文本编辑器（vscode）+一个编译器（c/c++编译器）组成开发环境，喜欢vscode界面的不要错过。</p>
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    用VScode写c/c++
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2019-08-18 ·
+                    </time>
+                    
+                </div>
+                <div class="post-content">
+                    <p>本篇文章主要介绍vscode下c/c++的配置，基本原理可以理解为用一个文本编辑器（vscode）+一个编译器（c/c++编译器）组成开发环境，喜欢vscode界面的不要错过。</p>
 <!-- more -->
 <h2 id="第一步下载并安装编译器">第一步，下载并安装编译器</h2>
 <p>1.首先，我们去网上下载c/c++编译器 MinGw -64</p>
 <p><a href="https://sourceforge.net/projects/mingw-w64/files/">下载地址：https://sourceforge.net/projects/mingw-w64/files/</a></p>
 <p>鉴于国内的网络环境，不建议下载在线安装器安装编译器（有可能装不上），这里我们直接下载完整版压缩包，选择最新版本8.1.0中的x86_64-win32-seh(64位系统，开发windows应用程序），单击进行下载。</p>
-<p><img src="https://guohaomeng.github.io/post-images/1566121695931.jpg" alt=""><br>
-2.下载完成之后可以解压到任意位置。<img src="https://guohaomeng.github.io/post-images/1566121721257.jpg" alt=""><br>
+<p><img src="https://guohaomeng.github.io/post-images/1566121695931.jpg" alt="" loading="lazy"><br>
+2.下载完成之后可以解压到任意位置。<img src="https://guohaomeng.github.io/post-images/1566121721257.jpg" alt="" loading="lazy"><br>
 3.添加环境变量。依次开始----设置----系统----关于----系统信息----高级系统设置----环境变量。选中系统变量中的path变量，编辑，新建，填入编译器bin文件夹的路径。OK！<br>
-<img src="https://guohaomeng.github.io/post-images/1566125266305.jpg" alt=""><br>
-<img src="https://guohaomeng.github.io/post-images/1566125276247.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566125266305.jpg" alt="" loading="lazy"><br>
+<img src="https://guohaomeng.github.io/post-images/1566125276247.jpg" alt="" loading="lazy"><br>
 4.接下来看看是否成功安装了编译器 win+R  填入cmd，运行。键入命令g++ -v，如果出现一大堆东西，就代表安装成功了。<br>
-<img src="https://guohaomeng.github.io/post-images/1566122749850.jpg" alt=""></p>
+<img src="https://guohaomeng.github.io/post-images/1566122749850.jpg" alt="" loading="lazy"></p>
 <h2 id="第二部配置vscode">第二部，配置vscode</h2>
 <p>1.安装c++扩展。在vscode扩展商店中搜索并安装c/c++，Code Runner这两款扩展。重启vscode使扩展生效。</p>
 <p>2.在磁盘某一位置（比如桌面）新建一个文件夹（比如my code)用于存放你将来的c/c++源程序文件。在vscode中单击 文件--打开文件夹，打开刚建好的文件夹。新建一个文件，如001.cpp，写下如下代码。</p>
@@ -141,15 +123,15 @@ int main()
 }
 </code></pre>
 <p>3.按F5编译，这时会提醒你配置c/c++编译器，总共需要配置lanuch.json及task.json两个配置文件。配置过程如下图<br>
-<img src="https://guohaomeng.github.io/post-images/1566124088049.jpg" alt=""><br>
-<img src="https://guohaomeng.github.io/post-images/1566124096108.jpg" alt=""><br>
-<img src="https://guohaomeng.github.io/post-images/1566124102343.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566124088049.jpg" alt="" loading="lazy"><br>
+<img src="https://guohaomeng.github.io/post-images/1566124096108.jpg" alt="" loading="lazy"><br>
+<img src="https://guohaomeng.github.io/post-images/1566124102343.jpg" alt="" loading="lazy"><br>
 4.CTRL+s保存，此时再回到001.cpp文件，再按F5，去配置任务文件<br>
-<img src="https://guohaomeng.github.io/post-images/1566124345036.jpg" alt=""><br>
-<img src="https://guohaomeng.github.io/post-images/1566124353610.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566124345036.jpg" alt="" loading="lazy"><br>
+<img src="https://guohaomeng.github.io/post-images/1566124353610.jpg" alt="" loading="lazy"><br>
 前面配置好编译器后，这里就不用多task.json文件做任何改动。CTRL+S保存一下<br>
 5.再度切回001.cpp，按下F5（编译+运行）；<br>
-<img src="https://guohaomeng.github.io/post-images/1566124773897.jpg" alt=""><br>
+<img src="https://guohaomeng.github.io/post-images/1566124773897.jpg" alt="" loading="lazy"><br>
 弹出小黑窗，大功告成！</p>
 <h2 id="最后">最后</h2>
 <p>告诉大家一个命令行里手动编译cpp/c文件的命令，比如编译上面的那个001.cpp</p>
@@ -158,77 +140,81 @@ g++ 001.cpp -o 001          //-o是重命名，g++后跟源文件名，C语言�
 ./001.exe                            //运行生成的可执行文件
 </code></pre>
 <p>如图：<br>
-<img src="https://guohaomeng.github.io/post-images/1566126298549.jpg" alt=""></p>
+<img src="https://guohaomeng.github.io/post-images/1566126298549.jpg" alt="" loading="lazy"></p>
 
-            </div>
-            
-            
-              <div class="next-post">
-                <div class="next">下一篇</div>
-                <a href="https://guohaomeng.github.io/post/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian">
-                  <h3 class="post-title">
-                    用vscode写网页----基础安装篇
-                  </h3>
-                </a>
-              </div>
-            
-
-            
-              
-                <div id="gitalk-container" data-aos="fade-in"></div>
-              
-
-              
-            
-
-          </div>
-
+                </div>
+            </article>
         </div>
-      </div>
-    </div>
 
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://guohaomeng.github.io/post/yong-vscode-xie-wang-ye-ji-chu-an-zhuang-pian/" class="post-title gt-a-link">
+                    用vscode写网页----基础安装篇
+                </a>
+            </div>
+        
 
-<script type="application/javascript">
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-AOS.init();
+<div id="gitalk-container"></div>
 
-hljs.initHighlightingOnLoad()
+<script>
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+  var gitalk = new Gitalk({
+    clientID: 'a58a10e740ada94b81bf',
+    clientSecret: '8296c6564d397f6d7423403a021fd1b573ab6664',
+    repo: 'guohaomeng.github.io',
+    owner: 'guohaomeng',
+    admin: ['guohaomeng'],
+    id: location.pathname,      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
 
 </script>
 
+            
 
-  
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-    <script>
+            
+        
 
-      var gitalk = new Gitalk({
-        clientID: 'a58a10e740ada94b81bf',
-        clientSecret: '8296c6564d397f6d7423403a021fd1b573ab6664',
-        repo: 'guohaomeng.github.io',
-        owner: 'guohaomeng',
-        admin: ['guohaomeng'],
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">温故而知新</div>
+    <div class="social-container">
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://guohaomeng.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
 
-      gitalk.render('gitalk-container')
-
-    </script>
-  
-
-  
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
 
 
-
-
-  </body>
+    </div>
+</div>
+</body>
 </html>
