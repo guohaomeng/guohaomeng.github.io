@@ -3,7 +3,7 @@
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Hello Gridea | meng的博客</title>
+<title>微机原理课的一道汇编题 | meng的博客</title>
 <link rel="shortcut icon" href="https://guohaomeng.github.io/favicon.ico?v=1587211249836">
 <link href="https://cdn.bootcss.com/font-awesome/5.11.2/css/all.css" rel="stylesheet">
 <link rel="stylesheet" href="https://guohaomeng.github.io/styles/main.css">
@@ -87,45 +87,79 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Hello Gridea
+                    微机原理课的一道汇编题
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2018-12-12 ·
+                        · 2020-04-18 ·
                     </time>
-                    
-                        <a href="https://guohaomeng.github.io/tag/gridea/" class="post-tags">
-                            # Gridea
-                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
+                    <p>记录下自己写的第一个汇编程序</p>
 <!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="http://hvenotes.fehey.com/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>𝖶𝗂𝗇𝖽𝗈𝗐𝗌</strong> 或 <strong>𝖬𝖺𝖼𝖮𝖲</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+<h2 id="1题目要求">1.题目要求</h2>
+<p>在内存数据段符号地址为SDATA处连续存放了60个无符号字节数据，试统计该60个数中能被13除尽的数的个数（该结果应存于数据段符号地址COUNT处）。要求：写出完整的数据段与代码段。</p>
+<h2 id="2代码">2.代码</h2>
+<pre><code class="language-asm">DATA    SEGMENT
+SDATA   DB  10  DUP (5)
+        DB  10  DUP (26)
+        DB  20  DUP (13)
+        DB  20  DUP (9) ;这里设置了60个数，能被13整除的有30个
+COUNT   DB  0
+DATA    ENDS
+
+_STACKS SEGMENT STACK
+        DW  64  DUP (?)
+_STACKS ENDS
+
+CODE    SEGMENT
+        ASSUME CS:CODE, DS:DATA, SS:_STACKS, ES:DATA
+START:  MOV AX,DATA
+        MOV DS,AX
+        MOV ES,AX
+        MOV AX,_STACKS
+        MOV SS,AX       ;初始化各段首地址
+        LEA SI,SDATA
+        MOV CX,60
+        XOR AX,AX       ;ax清零，存放余数和商
+        MOV BL,0        ;bl清零，存放个数
+        MOV BH,0DH      ;bh存放除数:13
+NEXT:   MOV AL,[SI]
+        MOV AH,0
+        DIV BH          ;AX%BH，余数放入AH，商放入AL
+        INC SI          ;使si指向下一个被除数
+        CMP AH,0        ;判断余数是否为0
+        LOOPNZ NEXT     ;cx不为0且余数不为0时跳转
+        CMP CX,0
+        JZ  A1          ;cx若为0则结束循环
+        INC BL          ;能被整除数+1
+        CMP AH,0
+        LOOPZ NEXT      ;跳回去继续循环
+A1:     MOV COUNT,BL    ;把最终结果写到COUNT处
+        HLT
+CODE    ENDS
+        END START
+;OK VERSION
+</code></pre>
+<h2 id="3仿真结果">3.仿真结果</h2>
+<p>程序运行结束后各寄存器状态<br>
+<img src="https://guohaomeng.github.io/post-images/1587210905128.jpg" alt="" loading="lazy"><br>
+然后是ds段内存区域的状态<br>
+<img src="https://guohaomeng.github.io/post-images/1587210939009.jpg" alt="" loading="lazy"><br>
+可以看到BL所存放的结果为1EH，转换为十进制刚好为30。也就是说一共有30个数能被13整除，这与我们预设的数据相吻合</p>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://guohaomeng.github.io/post/zai-github-shang-fa-bu-jing-tai-wang-zhan/" class="post-title gt-a-link">
+                    在Github上发布静态网站
+                </a>
+            </div>
         
 
         
