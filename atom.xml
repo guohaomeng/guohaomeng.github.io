@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://guohaomeng.github.io</id>
     <title>meng的博客</title>
-    <updated>2020-08-09T12:24:52.705Z</updated>
+    <updated>2020-08-09T12:31:16.687Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://guohaomeng.github.io"/>
     <link rel="self" href="https://guohaomeng.github.io/atom.xml"/>
@@ -329,6 +329,11 @@ To https://github.com/wlxxxh/teamwork.git
 ]]></summary>
         <content type="html"><![CDATA[<p>介绍下引入看板娘的最简单的方法，但注意只能引入不能定制，相当于把别人写好的看板娘拿来放到自己网页上。能定制的以后我找时间再发~</p>
 <!-- more -->
+<h1 id="更新">更新</h1>
+<p>2018年10月31日，由 fghrsh 提供的原 API 停用，请更新至新地址。参考文章：<br>
+https://www.fghrsh.net/post/170.html</p>
+<p>2020年1月1日起，该项目不再依赖于 jQuery。<br>
+最新配置方法请见  <a href="https://github.com/stevenjoezhang/live2d-widget">https://github.com/stevenjoezhang/live2d-widget</a></p>
 <h1 id="一-代码准备">一、代码准备</h1>
 <pre><code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css&quot;&gt;
