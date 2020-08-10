@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://guohaomeng.github.io</id>
     <title>meng的博客</title>
-    <updated>2020-08-10T01:36:37.437Z</updated>
+    <updated>2020-08-10T02:30:30.871Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://guohaomeng.github.io"/>
     <link rel="self" href="https://guohaomeng.github.io/atom.xml"/>
@@ -10,6 +10,441 @@
     <logo>https://guohaomeng.github.io/images/avatar.png</logo>
     <icon>https://guohaomeng.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, meng的博客</rights>
+    <entry>
+        <title type="html"><![CDATA[微机原理实验程序]]></title>
+        <id>https://guohaomeng.github.io/post/wei-ji-yuan-li-shi-yan-cheng-xu/</id>
+        <link href="https://guohaomeng.github.io/post/wei-ji-yuan-li-shi-yan-cheng-xu/">
+        </link>
+        <updated>2020-08-10T02:04:13.000Z</updated>
+        <summary type="html"><![CDATA[<p>微机原理实验课上要求写的程序，带注释</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>微机原理实验课上要求写的程序，带注释</p>
+<!-- more -->
+<h1 id="实验一-简单程序设计实验">实验一 简单程序设计实验</h1>
+<p>1a. 调试程序，从3500H 内存单元开始建立 0~15 共 16 个数据</p>
+<pre><code class="language-asm">;1a.asm
+;调试程序，从3500H 内存单元开始建立 0~15 共 16 个数据
+_STACK SEGMENT STACK            ;8088宏汇编程序
+    DW   64 DUP (?)             ;定义堆栈段
+_STACK ENDS
+CODE    SEGMENT                 ;定义代码段
+        ASSUME CS:CODE ,SS:_STACK
+START:  MOV DI,3500H             ;程序开始设数据区首地址
+        MOV CX,0010H             ;字节数送入CX中
+        MOV AX,0000H
+A1: MOV [DI] , AL              ;写入一字节
+        INC DI                   ;修改地址指针
+        INC AX                   ;修改数据
+        DAA                     ;十进制调整
+        LOOP A1                  ;未填完则转移
+A2: JMP A2
+CODE  ENDS                      ;代码段结束
+        END START               ;程序结束
+</code></pre>
+<p>1b.设计并调试程序，将 3500H 内存单元开始的 0~15 共 16 个数据依次复制到 3600H 内存单元中。</p>
+<pre><code class="language-asm">; 1b.asm
+; 设计并调试程序，将 3500H 内存单元开始的 0~15 共 16 个数据依次复制到 3600H 内存单元中。
+_STACK SEGMENT STACK            ;8088宏汇编程序
+    DW   64 DUP (?)             ;定义堆栈段
+_STACK ENDS
+CODE    SEGMENT                 ;定义代码段
+ASSUME CS:CODE,SS:_STACK
+START: MOV  SI,3500H
+       MOV  DI,3600H
+       MOV  CX,0008H
+A1:    MOV  AX,[SI]
+       MOV  [DI],AX
+       INC  SI
+       INC  SI
+       INC  DI
+       INC  DI
+       DEC  CX
+       JNZ  A1
+A2:    JMP A2
+CODE   ENDS
+    END     START
+</code></pre>
+<h1 id="实验二-数码转换编程及设计实验">实验二 数码转换编程及设计实验</h1>
+<p>2a. 设从键盘输入的五位十进制数的 ASCII 码已存放在 3500H 起始的内存单元内，编程把它转换为BCD 码，并按位分别存入 350AH 起始的内存单元内；若输入的不是十进制数的 ASCII 码，则对应存放结果的单元写入“FF”。</p>
+<pre><code class="language-asm">;2a.asm
+;设从键盘输入的五位十进制数的 ASCII 码已存放在 3500H 起始的内存单元内，编程把它转换为
+;BCD 码，并按位分别存入 350AH 起始的内存单元内；若输入的不是十进制数的 ASCII 码，则对应存
+;放结果的单元写入“FF”。
+_STACK SEGMENT STACK            ;8088宏汇编程序
+    DW   64 DUP (?)             ;定义堆栈段
+_STACK ENDS 
+CODE    SEGMENT                 ;定义代码段
+ASSUME CS:CODE,SS:_STACK
+
+START: MOV  CX,0005H
+       MOV  DI,3500H
+A1:    MOV  BL,0FFH
+       MOV  AL,[DI]
+       CMP  AL,3AH
+       JNB  A2
+       SUB  AL,30H
+       JC  A2
+       MOV  BL,AL
+A2:    MOV  AL,BL
+       MOV  [DI+0AH],AL
+       INC  DI
+       LOOP  A1
+A3:    JMP  A3
+
+CODE   ENDS
+    END     START
+</code></pre>
+<p>2b. 设经过 CPU 处理后的十六进制数存放于起始地址为 3500H 的内存单元中，把它们转换成 ASCII码后，再分别存入起始地址为 350AH 的内存单元中。</p>
+<pre><code class="language-asm">;2b.asm
+;设经过 CPU 处理后的十六进制数存放于起始地址为 3500H 的内存单元中，把它们转换成 ASCII码后，再分别存入起始地址为 350AH 的内存单元中。
+;提示：从表 2-1 可知十六进制数加 30H 即可得到十六进制数码 00H~09H 的 ASCII 码，而要得到
+_STACK SEGMENT STACK            ;8088宏汇编程序
+    DW   64 DUP (?)             ;定义堆栈段
+_STACK ENDS
+CODE    SEGMENT                 ;定义代码段
+ASSUME CS:CODE,SS:_STACK
+
+START: MOV  CX,0004H
+       MOV  DI,3500H
+       MOV  DX,[DI]
+A1:    MOV  AX,DX
+       AND  AX,0FH
+       CMP  AL,0AH
+       JC   A2
+       ADD  AL,07H
+A2:    ADD  AL,30H
+       MOV  [DI+0AH],AL
+       INC  DI
+       PUSH CX
+       MOV  CL,04H
+       SHR  DX,CL
+       POP  CX
+       LOOP A1
+A3:    JMP  A3
+CODE   ENDS
+    END     START
+</code></pre>
+<h1 id="实验三-显示程序设计实验">实验三 显示程序设计实验</h1>
+<p>3a. 在显示器上显示 A~Z 26 个英文字母。</p>
+<pre><code class="language-asm">;3a.asm
+;在显示器上显示 A~Z 26 个英文字母。
+_STACK SEGMENT STACK            ;8088宏汇编程序
+    DW   64 DUP (?)             ;定义堆栈段
+_STACK ENDS 
+CODE    SEGMENT                 ;定义代码段
+ASSUME CS:CODE,SS:_STACK
+
+START:  MOV  CX,001AH           ;设置循环次数为26
+        MOV  BL,41H             ;将A的ASCII码送入BL
+        MOV  AH,02H             ;设置中断向量码
+A1:     MOV  DL,BL              ;将bl内ascii码复制到dl，以输出此字符
+        INT  21H                ;向显示屏输出此字符
+        INC  BL                 ;更改为下一个相邻字母
+        PUSH CX                 ;将cx值压入堆栈
+        MOV  CX,0FFFFH          ;设置延时
+A2:     LOOP A2                 ;延时程序
+        POP  CX                 ;延时完毕，将cx弹出堆栈
+        DEC  CX                 ;更改计数器值
+        JNZ  A1                 ;跳回A1继续循环
+        JMP  $                  ;
+
+CODE   ENDS
+    END     START5
+</code></pre>
+<p>3b1. 自行编写程序，在显示器上显示‘GOOD AFTERNOON’</p>
+<p>方法一：</p>
+<pre><code class="language-asm">;3b1.asm
+;自行编写程序，在显示器上显示‘GOOD AFTERNOON’
+;分别用 AH=02(写一字符到屏上功能块)，AH=09（显示一字符串功能块）来完成。
+;方法一
+_STACK SEGMENT STACK            ;定义堆栈段
+    DW   64 DUP (?)             
+_STACK ENDS                     
+
+DATA SEGMENT
+        STR1  DB  'GOOD AFTERNOON$'
+DATA ENDS
+
+CODE    SEGMENT                 ;定义代码段
+ASSUME CS:CODE,SS:_STACK,DS:DATA
+
+START:  MOV  AX,_STACK
+        MOV  SS,AX              ;初始化ds,ss,ds
+        MOV  AX,DATA
+        MOV  DS,AX
+
+        MOV  CX,0EH             ;设置循环次数为字符串长度
+        MOV  DI,OFFSET STR1     ;取字符串首地址
+A2:     MOV  AH,02H             ;设置单个字符输出
+	MOV  DX,[DI]		;传送字符
+        INT  21H                ;输出一个字符
+        INC  DI                 ;修改地址指针，使其指向下一个字符
+        PUSH CX                 ;把cx压入堆栈
+        MOV CX,0FFFFH           ;设置延时
+A3:     LOOP A3                 ;延时函数
+        POP  CX                 ;弹出cx
+        DEC  CX                 ;cx-1
+        JNZ  A2                 ;未完则继续循环
+A1:     JMP  A1
+
+CODE   ENDS
+    END     START
+</code></pre>
+<p>方法二：</p>
+<pre><code class="language-asm">;3b2.asm
+;自行编写程序，在显示器上显示‘GOOD AFTERNOON’
+;分别用 AH=02(写一字符到屏上功能块)，AH=09（显示一字符串功能块）来完成。
+;方法二
+DADD MACRO X,Y,Z                ;8088宏汇编程序
+     MOV AX,X
+     ADD AX,Y
+     MOV Z,AX
+     ENDM
+
+_STACK SEGMENT STACK            ;定义堆栈段
+    DW   64 DUP (?)
+_STACK ENDS
+
+DATA SEGMENT
+        STR1  DB  'GOOD AFTERNOON$'
+DATA ENDS
+
+CODE    SEGMENT                 ;定义代码段
+ASSUME CS:CODE,SS:_STACK,DS:DATA
+
+START:  MOV  AX,_STACK
+        MOV  SS,AX              ;初始化cs,ss,ds
+        MOV  AX,DATA
+        MOV  DS,AX
+
+        MOV  DX,OFFSET STR1     ;取字符串首地址
+        MOV  AH,09H             ;设置输出字符串
+        INT  21H                ;输出该字符串
+A1:     JMP  A1
+
+CODE   ENDS
+    END     START
+</code></pre>
+<h1 id="实验四-8253定时计数器应用设计实验">实验四 8253定时/计数器应用设计实验</h1>
+<p>4a. 设置8253工作在方式0，脉冲计数，6个脉冲后，使发光LED熄灭</p>
+<pre><code class="language-asm">;4a.asm
+;工作方式0，脉冲计数，6个脉冲后，发光LED熄灭
+TCONTR  EQU  0263H
+TCON0   EQU  0260H
+TCON1   EQU  0261H
+TCON2   EQU  0262H
+
+_STACK SEGMENT STACK            ;定义堆栈段
+    DW   64 DUP (?)             
+_STACK ENDS                     
+
+CODE 	SEGMENT
+	ASSUME 	CS:CODE, SS:_STACK
+START:  MOV  DX,TCONTR          ;端口地址超过8位，先送至dx
+        MOV  AL,00010000B       ;计数器0，读写低8位，方式0，二进制计数
+        OUT  DX,AL              ;写计数器0控制字
+        MOV  DX,TCON0           ;将端口地址送至dx
+        MOV  AL,05              ;先写入低字节
+        OUT  DX,AL              ;向计数器0写计数初值
+        JMP  $
+CODE    ENDS
+        END  START
+</code></pre>
+<p>4b. 根据各实验单元，进行实验线路设计，实现以下功能：设定 8253 的 2#通道工作在方式 0，用于对外部事件（拨动开关产生单脉冲）计数，当出现的脉冲数为 6 次时，发出中断请求信号，屏幕上显示字符“M”。</p>
+<pre><code class="language-asm">;4b.asm
+;根据各实验单元，进行实验线路设计，实现以下功能：设定 8253 的 2#通道工作在方
+;式 0，用于对外部事件（拨动开关产生单脉冲）计数，当出现的脉冲数为 6 次时，发出中
+;断请求信号，屏幕上显示字符“M”。
+COM_ADDR	EQU	0263H
+T0_ADDR		EQU	0260H
+T1_ADDR		EQU	0261H
+T2_ADDR		EQU	0262H
+
+IO8259_0	EQU	0250H
+IO8259_1	EQU	0251H
+
+_STACK 	SEGMENT STACK
+	DW 	100 DUP(?)
+_STACK 	ENDS
+
+CODE 	SEGMENT
+	ASSUME 	CS:CODE, SS:_STACK
+START:  CLI
+				CALL		Init8259			;调用8259初始化函数
+				CALL		WriIntver			;中断向量
+
+				MOV  DX,COM_ADDR			;端口地址超8位，先送至dx
+				MOV  AL,90H						;计数器2，读写低8位，方式0，二进制计数
+				OUT  DX,AL						;将控制字写入8253
+A1:			MOV  DX,T2_ADDR				;将计数器2地址送入dx
+				MOV  AL,05H						;先写入低字节，计数初值为6
+				OUT  DX,AL						;写入计数初值
+				STI										;允许中断发生
+				HLT										;暂停
+				JMP  A1
+
+IRQ7:		MOV  AH,02H						;设置单字符显示模式
+				MOV  DL,4DH						;设置显示字符为M
+				INT  21H							;向屏幕输出字符
+				MOV  DL,20H						;设置显示字符为空格
+				INT  21H							;向屏幕输出字符
+
+				MOV  DX,IO8259_0			;写操作命令字OCW2,设置中断结束方式
+				MOV  AL,20H						;一般EOI命令，全嵌套方式
+				OUT  DX,AL						;向8259发出中断结束命令EOI
+				IRET
+				
+Init8259	PROC	NEAR
+		MOV	DX,IO8259_0
+		MOV	AL,13H
+		OUT	DX,AL      ;13H-&gt;ICW1：8086模式、需要初始化ICW4
+		MOV	DX,IO8259_1
+		MOV	AL,08H
+		OUT	DX,AL  ;08H-&gt;ICW2, 也就是IR0的中断向量是08H，…，IR7的中断向量是0FH
+		MOV	AL,09H
+		OUT	DX,AL    ;09H-&gt;ICW4
+		MOV	AL,07FH
+		OUT	DX,AL   ;7FH-&gt;OCW1(IMR),仅允许IR7中断
+		RET
+Init8259	ENDP
+
+WriIntver	PROC	NEAR
+		PUSH	ES
+		MOV	AX,0
+		MOV	ES,AX
+		MOV	DI,20H + 7 * 4        ;IR7中断向量是 8（ICW2）+7
+					;中断向量对应的物理地址 = 中断向量 * 4
+					;IR7对应的物理地址=8*4(20H) + 7 * 4
+					;ES:DI --- 0000H:3CH(20H+1CH)
+		LEA	AX,IRQ7   ;IR7中断入口地址对应的段内偏移
+		STOSW    ;4个字节，段内偏移在前，段后偏移
+		MOV	AX,CS  ;段地址
+		STOSW
+		POP	ES
+		RET
+WriIntver	ENDP
+
+CODE 	ENDS
+     	END 	START
+
+</code></pre>
+<h1 id="实验五-8255a-扩展开关电路接口设计实验">实验五 8255A 扩展开关电路接口设计实验</h1>
+<p>5a. 用发光二极管来指示开关的闭合情况，即若开关 Kn 闭合则二极管 LEDn 发光，否则LEDn 灭。</p>
+<pre><code class="language-asm">;5a.asm
+;用发光二极管来指示开关的闭合情况，即若开关 Kn 闭合则二极管 LEDn 发光，否则LEDn 灭。
+PA_8255 EQU 0270H
+PB_8255 EQU 0271H
+PC_8255 EQU 0272H
+MODE_8255 EQU 0273H
+_STACK SEGMENT  STACK
+  DW  64  DUP(?)
+_STACK  ENDS
+
+CODE  SEGMENT
+  ASSUME CS:CODE,SS: _STACK
+START:  MOV  DX,MODE_8255  ;接口地址超8位，先送至dx
+        MOV  AL,82H   ;方式0，端口B输入，端口A、C输出
+        OUT  DX,AL  ;写控制字
+A1:     MOV  DX,PB_8255   ;接口地址送到dx
+        IN   AL,DX  ;读输入口开关
+        MOV  DX,PA_8255   ;接口地址送到dx
+        OUT  DX,AL  ;写输出口控制二极管
+        JMP  A1
+CODE  ENDS
+    END START
+</code></pre>
+<p>5b. 设计接口电路，将 8255A 与开关和发光二极管电路合理连接，并编程实现8个LED依次循环流水</p>
+<pre><code class="language-asm">;5b.asm
+;设计接口电路，将 8255A 与开关和发光二极管电路合理连接，并编程实现8个LED依次循环流水
+;连线说明：D3区：CS、A0、A1 -- A3区：CS1、A0、A1
+;D3区：JP23（PA） -- F4区：JP18
+PA_8255 EQU 0270H
+PB_8255 EQU 0271H
+PC_8255 EQU 0272H
+MODE_8255 EQU 0273H
+_STACK SEGMENT  STACK
+  DW  64  DUP(?)
+_STACK  ENDS
+
+CODE  SEGMENT
+        ASSUME CS:CODE,SS: _STACK
+START:  CLC                     ;
+        MOV  AL,80H             ;方式0，ABC输出
+        MOV  DX,MODE_8255       ;
+        OUT  DX,AL              ;写控制字
+        MOV  AL,0FEH            ;设置控制字80H
+CONT:   MOV  DX,PA_8255         ;点亮L1
+        OUT  DX,AL              ;点亮L1
+        CALL DELAY              ;延时等待
+        ROL  AL,01H             ;循环左移
+        JMP  CONT               ;循环
+DELAY  PROC                     ;延时子程序
+        PUSH BX                 ;保护寄存器BX
+        PUSH CX                 ;保护CX
+        MOV  BL,0FFH            ;第一层循环FFH次
+NEXT:   MOV  CX,3999H           ;第二层嵌套循环3999H次
+WAIT1:  LOOP WAIT1              ;
+        DEC  BL                 ;
+        JNZ  NEXT               ;
+        POP  CX                 ;
+        POP  BX                 ;
+        RET                     ;
+DELAY   ENDP
+CODE    ENDS
+        END START
+</code></pre>
+<p>5c. 改进实验线路及程序，实现利用 PC 口的一个端口，来控制流水灯的流动方向。</p>
+<pre><code class="language-asm">;5c.asm
+;改进实验线路及程序，实现利用 PC 口的一个端口，来控制流水灯的流动方向。
+;8个LED依次循环流水,PB0控制流水方向
+;连线说明：D3区：CS、A0、A1 -- A3区：CS1、A0、A1
+;D3区：JP23（PA） -- F4区：JP18
+PA_8255 EQU 0270H
+PB_8255 EQU 0271H
+PC_8255 EQU 0272H
+MODE_8255 EQU 0273H
+_STACK SEGMENT  STACK
+  DW  64  DUP(?)
+_STACK  ENDS
+
+CODE  SEGMENT
+        ASSUME CS:CODE,SS: _STACK
+START:  CLC                     ;
+        MOV  AL,82H             ;方式0，AC输出
+        MOV  DX,MODE_8255       ;
+        OUT  DX,AL              ;写控制字
+        MOV  AL,0FEH            ;设置控制字80H
+CONT:   MOV  DX,PA_8255         ;点亮L1
+        OUT  DX,AL              ;点亮L1
+        CALL DELAY              ;延时等待
+        PUSH AX                 ;保存当前流水灯状态数据
+        MOV  DX,PB_8255
+        IN   AL,DX              ;读入PB口控制开关状态
+        TEST AL,01H             ;测试PB0控制端口电平高低
+        JZ   A1                 ;低电平则循环左移
+        POP  AX                 ;弹出流水灯状态
+        ROR  AL,01H             ;循环右移
+        JMP  CONT               ;循环
+A1:     POP  AX                 ;弹出流水灯状态
+        ROL  AL,01H             ;循环左移
+        JMP  CONT               ;循环
+DELAY  PROC                     ;延时子程序
+        PUSH BX                 ;保护寄存器BX
+        PUSH CX                 ;保护CX
+        MOV  BL,0FFH            ;第一层循环FFH次
+NEXT:   MOV  CX,3999H           ;第二层嵌套循环3999H次
+WAIT1:  LOOP WAIT1              ;
+        DEC  BL                 ;
+        JNZ  NEXT               ;
+        POP  CX                 ;
+        POP  BX                 ;
+        RET                     ;
+DELAY   ENDP
+CODE    ENDS
+        END START
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[微机原理课的一道汇编题]]></title>
         <id>https://guohaomeng.github.io/post/wei-ji-yuan-li-ke-de-yi-dao-hui-bian-ti/</id>
@@ -620,34 +1055,6 @@ int main(int argc, char **argv)
 }
 </code></pre>
 <p>源程序及测试文件：<a href="../../otherfiles/audiotest.zip">点此下载</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[试一试视频]]></title>
-        <id>https://guohaomeng.github.io/post/shi-yi-shi-shi-pin/</id>
-        <link href="https://guohaomeng.github.io/post/shi-yi-shi-shi-pin/">
-        </link>
-        <updated>2019-06-21T13:54:33.000Z</updated>
-        <summary type="html"><![CDATA[<p>看看能不能放上视频（推荐使用chrome浏览器）</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>看看能不能放上视频（推荐使用chrome浏览器）</p>
- <!-- more --> 
-<p>视频大概93MB，1m15s<br>
-look！<br>
-<br></p>
- <video width="100%" height="" controls="controls" autoplay="autoplay">
-		<source src="../../otherfiles/video/video1.mp4" type="video/mp4" />
-	看到这句话说明你的浏览器不支持HTML5的video标签
-</video>
-	底下是这次测试视频用的代码
-	<br>
-<p><img src="https://guohaomeng.github.io/post-images/1561181015756.jpg" alt="" loading="lazy"><br>
-<br><br>
-分割线</p>
-<hr>
-<p><img src="https://guohaomeng.github.io/post-images/1561367139373.png" alt="" loading="lazy"><br>
-<br><br>
-视频中的转场：<a href="../../otherfiles/zhuanchang.zip">10个无缝转场</a></p>
 ]]></content>
     </entry>
 </feed>
